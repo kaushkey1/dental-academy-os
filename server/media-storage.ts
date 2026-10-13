@@ -74,7 +74,9 @@ export function configuredStorage(): MediaStorage | undefined {
 
 export function netlifyMediaStorage(): MediaStorage {
   // Resolve the request's credentials lazily, after connectLambda has run.
-  const store = () => getStore({ name: 'academy-private-media', consistency: 'strong' });
+  // Content-addressed keys are immutable; new blobs are immediately readable.
+  // Default consistency also supports connectLambda's cached-edge credentials.
+  const store = () => getStore({ name: 'academy-private-media' });
   const get = async (key: string) => {
     const bytes = await store().get(key, { type: 'arrayBuffer' });
     assert(bytes, 'Document not found', 404);
