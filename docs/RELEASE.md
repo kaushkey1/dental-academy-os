@@ -33,7 +33,7 @@ release gates; do not silently reduce scope or label open work as complete.
 | Privacy             | Consent record; tenant RLS; no patient entities; safe CSV                                                                                                                                                                                                                                | Academy-approved notices/retention; export/deletion jobs; data inventory; recovery/legal review                                                                                                                                                                          |
 | Infrastructure      | Production env guard; stateless Node build; Docker/GCP templates; CI definition                                                                                                                                                                                                          | Docker execution; GCP provisioning; secrets; storage/jobs; monitoring; backups/restore; custom domains; load/performance tests                                                                                                                                           |
 | Migration           | None yet                                                                                                                                                                                                                                                                                 | Icode catalog; LearnDash program/run dedupe; learner/course access import; historical certificate import; counts and reconciliation; old URL redirects                                                                                                                   |
-| QA                  | 216 invariant/authenticated HTTP/provider-contract tests; production build; targeted desktop/mobile browser checks                                                                                                                                                                       | Browser visual/keyboard/responsive checks; real Postgres concurrency; real provider staging; security review; both-academy acceptance sign-off                                                                                                                           |
+| QA                  | 219 invariant/authenticated HTTP/provider-contract tests; production build; targeted desktop/mobile browser checks                                                                                                                                                                       | Browser visual/keyboard/responsive checks; real Postgres concurrency; real provider staging; security review; both-academy acceptance sign-off                                                                                                                           |
 
 ## Next implementation slices
 
@@ -654,20 +654,38 @@ course publishing/prices, teaching approvals or real-provider settings were chan
 Postgres concurrency, scheduler capacity/monitoring and WhatsApp/email delivery remain open.
 
 
-October 14 Netlify preparation: the private kaushkey1/dental-academy-os repository is
-created and connected to the new dental-academy-os-kaushkey Netlify project with a read-only
-deploy key and push webhook. Builds are paused until database provisioning is complete.
-Express Functions, scheduled course updates, private Blobs storage, a restricted runtime
-connection guard and explicitly enabled access-code demo sign-in are implemented. Both
-academies and all five existing role types are selectable; the hosted identity mappings
-will be populated during import. Demo sign-in checks active roles and uses durable attempt
-limits. Normal OTP delivery is blocked in demo mode; no development OTP is published.
+October 14 Netlify deployment: the private kaushkey1/dental-academy-os repository is
+connected to dental-academy-os-kaushkey with a read-only deploy key and push webhook.
+Production deploys from main now build successfully, including Express API functions
+and the course-updates schedule (every 15 minutes). A hosted compatibility issue with
+client IPs was fixed and covered with rate-limit and binary-response regression tests.
+The production build and all 219 tests pass; GitHub CI also passes. Private media
+uses immutable content-addressed keys and conditional writes with the default Blobs
+consistency, compatible with Netlify's Lambda credentials. A regression test covers
+binary reads, safe retries, conflicting content and missing files.
 
-The local database was stopped, snapshotted consistently and restarted. The export excludes
-auth challenges. Six local document/proof objects have been copied to the new project's
-private Blobs store and verified by SHA-256. The database import and live deployment are
-NOT complete: Netlify's default read-only access for personal access tokens requires the
-owner's approval before temporary write access can be enabled. Do not claim the demo is live.
-Production build, Netlify function bundling and all 216 tests pass, including three demo
-auth tests. New document/proof uploads are explicitly limited to 4 MB on Netlify. The
-existing HLS bundle size warning remains. See NETLIFY.md for the deployment/runbook.
+The local database was stopped, snapshotted consistently and restarted. 45 data tables
+and 786 existing records were imported atomically, excluding authentication challenges.
+Counts matched before missing demo role accounts and faculty assignments were added.
+Both academies retain their courses, bookings, progress and audit history. Six private
+media/proof objects were copied and verified by SHA-256. Public integration keys were
+rotated; local sessions were not copied. Temporary database owner access was disabled
+after setup and its local credential file removed.
+
+The actual hosted academy_runtime role has no superuser, BYPASSRLS or CREATEROLE
+capability. Cross-tenant reads and writes, default tenantless reads, and escalation to
+netlifydb_owner were tested and denied. Runtime secrets exclude migration credentials.
+The shared demo access code maps to explicit, active identities for all five existing
+roles in both academies; normal OTP delivery is blocked in demo mode.
+
+Protected-site browser checks passed for admin, coordinator, marketing, faculty and
+learner sign-in in both academies. Imported counts and role-specific navigation are
+visible; the Icode full course, saved progress and nine-page private workbook render
+successfully. Proof screenshots are in ../../work/netlify/. Deployment 6ace87e5a731d00a4bf17450
+is ready on commit 9dd42c5, automatically triggered by the GitHub push.
+
+Netlify team protection is still enabled. Public sharing requires the user's explicit
+approval after automatic approval review rejected the access change. The demo is not the finished production
+release; original release gates remain open. New document/proof uploads are limited to
+4 MB on Netlify, with matching UI validation. The existing HLS bundle warning remains.
+See NETLIFY.md for the deployment/runbook.
