@@ -1,0 +1,2970 @@
+{
+  "version": 1,
+  "key": "clinical-photography-complete-v1",
+  "slug": "clinical-photography-foundations-complete-review",
+  "title": "Clinical Photography Foundations · Complete Course",
+  "specialty": "Clinical photography",
+  "summary": "A complete model-based course in repeatable clinical photography: six modules, 12 lessons, a practical workbook, portfolio capstone and 16-question assessment. Review edition; clinical approval and accreditation are pending. No approved education credits.",
+  "minutes": 220,
+  "objectives": [
+    "Explain what a useful photographic record must let another person understand.",
+    "Describe a safe handoff between subject preparation, camera handling and record storage.",
+    "Prepare a documented setup that another team member can reproduce.",
+    "Change one exposure variable at a time and evaluate sharpness where it matters.",
+    "Distinguish a lighting problem from a colour-balance problem.",
+    "Use a repeatable camera-subject relationship and identify misleading comparisons.",
+    "Plan a consistent three-view model sequence and verify orientation.",
+    "Check that an occlusal model view shows the intended arch and has a documented orientation.",
+    "Use a repeatable review checklist and choose a useful corrective action.",
+    "Prepare a traceable training set without exposing confidential information.",
+    "Demonstrate a documented capture-review-repeat workflow using a non-patient subject.",
+    "Turn your practice findings into a usable plan for the next session."
+  ],
+  "lessons": [
+    {
+      "module": "01 · Start with a reliable workflow",
+      "title": "Welcome: build a repeatable photography routine",
+      "minutes": 10,
+      "outcome": "Explain what a useful photographic record must let another person understand.",
+      "exercise": "Photograph a simple object once without changing anything. Write down the purpose of the frame and three things you would need to reproduce it tomorrow. Keep this as your baseline, not a portfolio image.",
+      "check": "Two pictures look attractive, but were made from different distances and angles. Are they ready for a reliable comparison?",
+      "answer": "Not yet. First establish whether differences arise from the subject or from how the pictures were made. Reproducible conditions matter more than visual polish.",
+      "sources": [
+        "records"
+      ],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "10 minutes, including practice. Outcome: Explain what a useful photographic record must let another person understand."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "This course takes you from an unplanned camera session to a repeatable record-making workflow. You will build a setup card, practise a view sequence, review image quality, and produce a small portfolio using a dental model or other non-patient training subject. The course is designed for dental professionals and their teams; no clinical diagnosis or treatment decision is taught here."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A good training image has a stated purpose. Before pressing the shutter, finish this sentence: “This frame needs to show…” A record for comparing visits, a view for a colleague, and an image for public communication have different contexts. Decide the purpose before choosing the framing or deciding where an image may be used."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Work through six modules in order on your first pass. Allow approximately three to four hours including the model-based activities and final assessment. Download the workbook from the optional Resources lesson and keep your answers locally. The platform saves lesson progress; it does not inspect or grade photographs."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "This is a complete course review edition. Academy clinical review, regional policy approval, faculty attribution and accreditation are pending. Completing its quiz demonstrates knowledge of this course, not clinical competence or approved continuing-education credit."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Use a model, mannequin, printed shape or other non-patient subject for every course exercise."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Prepare a camera or an academy-approved phone, a stable light source and a notebook."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Complete the 12 required lessons, then answer the 16-question post-test; 80% is required, with three initial attempts."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Keep patient photographs and identifiers out of this learning platform and workbook."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Photograph a simple object once without changing anything. Write down the purpose of the frame and three things you would need to reproduce it tomorrow. Keep this as your baseline, not a portfolio image."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Two pictures look attractive, but were made from different distances and angles. Are they ready for a reliable comparison?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Not yet. First establish whether differences arise from the subject or from how the pictures were made. Reproducible conditions matter more than visual polish."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Further reading"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Ettorre et al.: Standards for digital photography - basic views and guidelines",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://pubmed.ncbi.nlm.nih.gov/16427297/"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "01 · Start with a reliable workflow",
+      "title": "Permission, privacy and a clean working sequence",
+      "minutes": 15,
+      "outcome": "Describe a safe handoff between subject preparation, camera handling and record storage.",
+      "exercise": "Write a five-step model-session checklist. Mark every point where a hand moves between the model area, camera, computer and phone. Redesign one avoidable crossover. Do not write a real patient name.",
+      "check": "A patient agreed to photographs for their care. A team member wants to post one as a before-and-after example. What should happen next?",
+      "answer": "Pause the proposed publication and use the separately approved permission and governance process. Do not infer public-use permission from permission to create a care record.",
+      "sources": [
+        "consent",
+        "infection"
+      ],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "15 minutes, including practice. Outcome: Describe a safe handoff between subject preparation, camera handling and record storage."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Patient images require permission and confidential handling. A permission to make a care record should not be assumed to cover a presentation, advertising or social media. Follow the consent and information-governance process approved for your location and academy. The GDC reference is a UK professional standard; it is not a substitute for Indian or US requirements."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Photography also crosses clean and contaminated work areas. Identify who positions accessories and who touches the camera. CDC guidance supports barriers for difficult-to-clean clinical contact surfaces and appropriate cleaning or disinfection between patients. For cameras, retractors and mirrors, follow the specific manufacturer instructions and the clinic’s infection-control protocol; a cover does not make an item sterile."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "For this course, practise the handoff on a tabletop with a model. Do not introduce retractors, mirrors or other accessories into a person’s mouth as an unsupervised exercise. In clinical use, stop if a patient is uncomfortable or withdraws permission."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Before capture: confirm purpose, required permission, subject identity and the approved destination for the images."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Before handling: assign clean-camera and patient-side tasks; prepare compatible barriers and processed accessories."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "After capture: transfer using the approved workflow, check the destination, and handle temporary copies according to policy."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Before reuse: complete the clinic’s cleaning, disinfection or reprocessing sequence."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Write a five-step model-session checklist. Mark every point where a hand moves between the model area, camera, computer and phone. Redesign one avoidable crossover. Do not write a real patient name."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A patient agreed to photographs for their care. A team member wants to post one as a before-and-after example. What should happen next?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Pause the proposed publication and use the separately approved permission and governance process. Do not infer public-use permission from permission to create a care record."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Further reading"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "GDC: Standards for the dental team, confidentiality and images",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://www.gdc-uk.org/docs/default-source/information-standards-and-guidance/guidance-for-employers-of-trainees-students/new-standards-for-the-dental-team.pdf?sfvrsn=cbbacd84_2"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "CDC: Dental sterilization and disinfection",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://www.cdc.gov/dental-infection-control/hcp/summary/sterilization-disinfection.html"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "02 · Take control of the camera",
+      "title": "Build a practical kit and a setup card",
+      "minutes": 15,
+      "outcome": "Prepare a documented setup that another team member can reproduce.",
+      "exercise": "Create setup card A in the workbook. Move the kit away, reconstruct it using only the card, and make a second frame. Note which missing instruction made reproduction difficult.",
+      "check": "Is copying another clinic’s aperture, flash output and working distance enough to guarantee the same image?",
+      "answer": "No. Equipment and setup differ. Treat another setup as a starting reference, then test and document the result on your own system.",
+      "sources": [
+        "protocol",
+        "settings"
+      ],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "15 minutes, including practice. Outcome: Prepare a documented setup that another team member can reproduce."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Your most useful kit is one you can operate consistently. A camera body, suitable close-focusing lens, controlled lighting, a background and approved accessories form a system. A macro-capable setup is commonly used for dental records; the exact body, lens and lighting choice must fit the clinic’s protocol. Buying more equipment does not replace learning its controls."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "For the training exercises, a phone can help you explore framing and repeatability. Keep its lens selection consistent and avoid portrait blur, beauty filters or other effects that alter the subject. Do not assume its automatic processing or colour is interchangeable with the academy’s clinical camera. Use the approved device for real records."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A setup card reduces guesswork. Record the device, lens, mode, working distance or framing reference, aperture where available, shutter speed, ISO, lighting arrangement and white balance. Add a small sketch of the camera and subject positions. Label values as tested for this setup, rather than as universal dental settings."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Charge batteries, check available storage, and inspect the camera lens and training accessories."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Find the controls for exposure, focus, playback magnification and white balance in your device manual."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Choose a single non-patient training subject and a repeatable position on the table."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Make three frames, review them, then write down the settings that produced a usable result."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Create setup card A in the workbook. Move the kit away, reconstruct it using only the card, and make a second frame. Note which missing instruction made reproduction difficult."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Is copying another clinic’s aperture, flash output and working distance enough to guarantee the same image?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "No. Equipment and setup differ. Treat another setup as a starting reference, then test and document the result on your own system."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Further reading"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Ong et al.: A standardized approach to extra-oral and intra-oral digital photography",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://pubmed.ncbi.nlm.nih.gov/35938814/"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Ahmad: Digital dental photography, Part 6 - camera settings",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://www.nature.com/articles/sj.bdj.2009.607"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "02 · Take control of the camera",
+      "title": "Exposure, depth of field and deliberate focus",
+      "minutes": 20,
+      "outcome": "Change one exposure variable at a time and evaluate sharpness where it matters.",
+      "exercise": "Produce a pair of training frames labelled A and B. Write: what stayed fixed, what changed, what improved, and what became worse. Use the exposure experiment page in the workbook.",
+      "check": "You increase the f-number but keep shutter speed, ISO and illumination unchanged. What two changes should you look for?",
+      "answer": "Potentially more depth of field and a darker exposure. Confirm both in the actual image; aperture alone does not remove motion blur or guarantee every surface is sharp.",
+      "sources": [
+        "aperture",
+        "iso"
+      ],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "20 minutes, including practice. Outcome: Change one exposure variable at a time and evaluate sharpness where it matters."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Aperture, shutter speed and ISO work together. Aperture affects the amount of light and the depth of the acceptably sharp zone. A larger f-number usually increases depth of field, while admitting less light. Shutter speed controls exposure time. ISO is a signal-gain setting; raising it can help reach an exposure target but can also increase visible noise."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Close-up subjects can have limited depth of field. A bright image is not automatically a sharp one: enlarge playback and inspect the intended landmark as well as nearer and farther detail. Focus placement, camera movement and subject movement all matter. The camera’s flash-sync limit is equipment-specific; consult its manual before choosing a shutter speed for flash."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Do not chase the appearance of the rear screen by changing everything together. Decide whether the failure concerns exposure, depth of field or motion. Make one controlled change, repeat the frame and compare at the same display scale. For this exercise, the goal is explaining a tradeoff, not memorising a single set of settings."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Position three labelled objects at different distances from the camera."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Keep the focus point fixed on the middle object and compare two available apertures, if your camera allows it."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Review brightness and near-to-far sharpness separately; record any exposure compensation used."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "If using a phone without aperture control, compare deliberate focus placement and movement instead."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Produce a pair of training frames labelled A and B. Write: what stayed fixed, what changed, what improved, and what became worse. Use the exposure experiment page in the workbook."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "You increase the f-number but keep shutter speed, ISO and illumination unchanged. What two changes should you look for?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Potentially more depth of field and a darker exposure. Confirm both in the actual image; aperture alone does not remove motion blur or guarantee every surface is sharp."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Further reading"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Nikon: Understanding maximum aperture",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-maximum-aperture"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Nikon: ISO control",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/iso-control"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "03 · Make images comparable",
+      "title": "Control lighting, reflections and white balance",
+      "minutes": 20,
+      "outcome": "Distinguish a lighting problem from a colour-balance problem.",
+      "exercise": "Make a four-frame experiment: baseline, changed light direction, changed white balance, then reconstructed baseline. Identify which difference is geometry and which is colour rendering. Keep the original files.",
+      "check": "A bright reflection hides the feature you wanted to record. Should you solve it by recolouring the feature afterwards?",
+      "answer": "No. Review the capture conditions and repeat the frame with an appropriate lighting or positioning adjustment. Preserve the actual appearance rather than inventing detail in editing.",
+      "sources": [
+        "lighting",
+        "wb"
+      ],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "20 minutes, including practice. Outcome: Distinguish a lighting problem from a colour-balance problem."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Lighting determines which detail is visible and where reflections fall. Dental photography commonly uses camera-mounted flash systems; diffusers and reflectors change the light reaching the subject. Treat the light’s position, output and modifiers as part of the documented setup. A modification that makes one image dramatic may make it less comparable with the previous record."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "White balance compensates for the colour of the illumination. Automatic white balance may choose a different rendering from one frame to the next. Use the academy’s documented preset or calibrated workflow for the actual lighting setup, and repeat that workflow when conditions change. A neutral reference can help evaluate a colour cast; it is not a guarantee of accurate shade reproduction."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Clinical shade communication needs a separately validated workflow. A pleasing screen image is not proof of an accurate tooth shade, and this foundation course does not validate a shade-selection system. Practise with a neutral card and a coloured training object instead of a patient."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Photograph your training subject under one controlled light arrangement."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Change only light direction or a permitted modifier and inspect the position of bright reflections."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "For a separate comparison, keep lighting fixed and compare white-balance choices."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Write the final lighting arrangement and white-balance method on the setup card."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Make a four-frame experiment: baseline, changed light direction, changed white balance, then reconstructed baseline. Identify which difference is geometry and which is colour rendering. Keep the original files."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A bright reflection hides the feature you wanted to record. Should you solve it by recolouring the feature afterwards?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "No. Review the capture conditions and repeat the frame with an appropriate lighting or positioning adjustment. Preserve the actual appearance rather than inventing detail in editing."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Further reading"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Ahmad: Digital dental photography, Part 5 - lighting",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://www.nature.com/articles/sj.bdj.2009.558"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Nikon: Setting white balance",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "03 · Make images comparable",
+      "title": "Framing and extra-oral comparison",
+      "minutes": 15,
+      "outcome": "Use a repeatable camera-subject relationship and identify misleading comparisons.",
+      "exercise": "Capture two model profiles: one in the planned position and one with a deliberately tilted model. Explain what could be misinterpreted if these were labelled “before” and “after.” Do not present the altered pair as treatment evidence.",
+      "check": "Why can two equally sharp profile photographs still be unsuitable for comparison?",
+      "answer": "The camera or subject positions may differ. Sharpness alone does not establish geometric comparability.",
+      "sources": [
+        "portrait"
+      ],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "15 minutes, including practice. Outcome: Use a repeatable camera-subject relationship and identify misleading comparisons."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Perspective depends on the camera’s relationship to the subject. Changing camera position, subject distance, head position or lens choice can change the appearance of a facial record. Standardised portrait work therefore controls these variables and uses recognisable landmarks for comparison."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Practise on a mannequin head, a drawn face mounted on a box, or another suitable non-patient model. Establish a frontal view, a profile view and a three-quarter view for the exercise. These are training views, not a claim that every specialty requires the same clinical series. Your academy should specify its real clinical view list and positioning landmarks."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Keep enough context to identify the intended view. A very tight crop may hide the cue needed to judge rotation or level. For comparison, align capture conditions first; do not use later image manipulation to conceal inconsistent positioning."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Mark the camera and model positions using removable tabletop markers."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Keep the background, lighting, lens and camera height consistent."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Write the purpose and orientation of each planned view before taking it."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Rebuild one view after moving the kit, using your setup card rather than memory."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Capture two model profiles: one in the planned position and one with a deliberately tilted model. Explain what could be misinterpreted if these were labelled “before” and “after.” Do not present the altered pair as treatment evidence."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Why can two equally sharp profile photographs still be unsuitable for comparison?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "The camera or subject positions may differ. Sharpness alone does not establish geometric comparability."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Further reading"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Claman et al.: Standardized portrait photography for dental patients",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://pubmed.ncbi.nlm.nih.gov/2403072/"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "04 · Practise a view sequence",
+      "title": "Frontal and lateral intra-oral views on a model",
+      "minutes": 15,
+      "outcome": "Plan a consistent three-view model sequence and verify orientation.",
+      "exercise": "Make a three-frame model set. Give each image a training-only case ID and view label. Ask a colleague to identify the views without seeing your capture sequence. Record any label or framing ambiguity.",
+      "check": "You have two lateral photographs, but cannot confidently identify the side of either. Is the set complete?",
+      "answer": "No. A usable record needs reliable orientation as well as image quality. Resolve the ambiguity using the approved capture and labelling process; do not guess.",
+      "sources": [
+        "views"
+      ],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "15 minutes, including practice. Outcome: Plan a consistent three-view model sequence and verify orientation."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A common foundational intra-oral set includes frontal, right lateral and left lateral views, plus upper and lower occlusal views. A consistent sequence reduces omissions. The view list for a real patient still depends on the clinical purpose and local protocol."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Use a dental model for this lesson. State what each frame is intended to show, decide its boundaries, then position the camera so the intended area is visible. For lateral views, check that the view actually represents the intended side. Adopt the academy’s convention for patient-right and patient-left labels; the photographer’s viewpoint can otherwise create confusion."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Clinical access, soft-tissue retraction and patient comfort require trained handling. This model exercise teaches planning and image review; it does not qualify a learner to use retractors or perform intra-oral photography unsupervised."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Write the sequence: frontal, patient-right lateral, patient-left lateral."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "On the model, choose framing references that you can use again."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Review focus, visibility, orientation and unwanted obstruction immediately after each capture."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Repeat a missing or unusable view before moving on to the next activity."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Make a three-frame model set. Give each image a training-only case ID and view label. Ask a colleague to identify the views without seeing your capture sequence. Record any label or framing ambiguity."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "You have two lateral photographs, but cannot confidently identify the side of either. Is the set complete?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "No. A usable record needs reliable orientation as well as image quality. Resolve the ambiguity using the approved capture and labelling process; do not guess."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Further reading"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Bengel: Standardization in dental photography",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://pubmed.ncbi.nlm.nih.gov/3863799/"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "04 · Practise a view sequence",
+      "title": "Occlusal views and mirror orientation",
+      "minutes": 15,
+      "outcome": "Check that an occlusal model view shows the intended arch and has a documented orientation.",
+      "exercise": "Create the two occlusal model frames. Intentionally make one common framing error on the model, explain why it fails, and then capture a corrected version. Include both in your local practice notes.",
+      "check": "What should you do if a mirror frame looks sharp but contains a misleading or uncertain orientation?",
+      "answer": "Check the view against the capture record and apply the documented orientation convention to a derived copy. Preserve the original and resolve uncertainty before using the image.",
+      "sources": [
+        "intraoral"
+      ],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "15 minutes, including practice. Outcome: Check that an occlusal model view shows the intended arch and has a documented orientation."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Occlusal views add information that frontal and lateral views cannot show. Mirrors can make otherwise inaccessible surfaces visible, but also introduce orientation and visibility challenges. The image must still show the intended subject clearly enough for its stated purpose."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Practise only with a model and a suitable training mirror. Plan upper and lower occlusal views, inspect the model through the mirror, and distinguish the reflected subject from the edge of the mirror or an unintended duplicate reflection. Record the actual view and the display-orientation convention used. Keep the original file even when a derived copy is oriented for presentation."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "In real care, mirrors and accessories require the correct reprocessing and handling, and the patient’s comfort limits the attempt. Do not force access to obtain a frame. Escalate a difficult view to the supervising clinician rather than improvising an unsafe technique."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Prepare two labelled slots in your shot list: upper occlusal and lower occlusal."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Position the model and training mirror to show the intended arch and framing boundaries."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Check for obstruction, fogging, reflections, edge intrusion and loss of focus."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Label the result using the academy’s convention and retain the original capture."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Create the two occlusal model frames. Intentionally make one common framing error on the model, explain why it fails, and then capture a corrected version. Include both in your local practice notes."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "What should you do if a mirror frame looks sharp but contains a misleading or uncertain orientation?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Check the view against the capture record and apply the documented orientation convention to a derived copy. Preserve the original and resolve uncertainty before using the image."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Further reading"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Ahmad: Digital dental photography, Part 8 - intra-oral set-ups",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://pubmed.ncbi.nlm.nih.gov/19696825/"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "05 · Review and protect the record",
+      "title": "A quality gate before you finish the session",
+      "minutes": 20,
+      "outcome": "Use a repeatable review checklist and choose a useful corrective action.",
+      "exercise": "Review your five-view model set using the workbook rubric. Choose the weakest frame, record a single corrective action, repeat it, and explain whether the correction addressed the original failure.",
+      "check": "A frame is bright enough but the intended feature is blurred. What should you investigate first?",
+      "answer": "Investigate focus placement and movement, and check the depth of field. Making the image brighter alone will not restore missing detail.",
+      "sources": [
+        "quality"
+      ],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "20 minutes, including practice. Outcome: Use a repeatable review checklist and choose a useful corrective action."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A quality review is most useful while the subject and setup are still available. Check whether the frame answers its stated purpose, then inspect visibility, focus, exposure, geometry and orientation. A small thumbnail can hide an error that becomes obvious when enlarged."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "The checklist in this course is a training tool, not a validated diagnostic score. For every frame, record “usable,” “repeat,” or “needs supervisor review,” with one reason. A low-quality frame should prompt a targeted correction. If the feature is obscured, address visibility; if the capture is blurred, check focus and movement. Avoid repeatedly changing unrelated controls."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A complete image set also needs the planned views. Five excellent frames of the same view do not replace a missing view. Review both image quality and set completeness before considering the exercise finished."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Purpose: does the intended feature and enough context appear?"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Clarity: inspect the relevant detail at a useful enlargement."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Exposure and colour: identify clipped areas, colour casts and inconsistent lighting."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Geometry and sequence: verify the intended view, orientation and shot-list coverage."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Review your five-view model set using the workbook rubric. Choose the weakest frame, record a single corrective action, repeat it, and explain whether the correction addressed the original failure."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A frame is bright enough but the intended feature is blurred. What should you investigate first?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Investigate focus placement and movement, and check the depth of field. Making the image brighter alone will not restore missing detail."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Further reading"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Bloemen et al.: Development and evaluation of a standardized photography protocol",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5052606/"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "05 · Review and protect the record",
+      "title": "File organisation and an honest communication handoff",
+      "minutes": 15,
+      "outcome": "Prepare a traceable training set without exposing confidential information.",
+      "exercise": "Create an index for your model set with filename, view, capture conditions, quality decision and any derived-copy changes. Write a three-sentence handoff that states what the set can and cannot demonstrate.",
+      "check": "You make an oriented copy of an occlusal image for a presentation. What should happen to the original file?",
+      "answer": "Keep the original according to the approved record policy and identify the presentation image as a derived copy. Do not silently replace the capture record.",
+      "sources": [
+        "records"
+      ],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "15 minutes, including practice. Outcome: Prepare a traceable training set without exposing confidential information."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "A useful record must remain connected to its intended subject, date, view and purpose. Plan the naming and storage workflow before a busy session. For this course use a fictional training ID such as MODEL-001; do not put patient names, contact details or clinical identifiers into the course workbook."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Preserve original files and distinguish any derived presentation copies. Record why a crop, rotation or other permitted transformation was made. Do not alter anatomy, remove clinically relevant detail or present a simulated change as a treatment outcome. Editing that improves presentation must not obscure the provenance of the record."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Use the organisation’s approved clinical storage and sharing systems for real records. This learning platform is not a patient image archive. Regional privacy obligations and retention schedules must be approved locally; no universal number of years or permission wording is supplied here."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Build a training folder with original files, derived copies and a short index."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Use a consistent filename convention: training ID, capture date, view and sequence number."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Include the purpose, missing views and any limits when handing a set to another person."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Check the destination and recipients before any real clinical transfer."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Create an index for your model set with filename, view, capture conditions, quality decision and any derived-copy changes. Write a three-sentence handoff that states what the set can and cannot demonstrate."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "You make an oriented copy of an occlusal image for a presentation. What should happen to the original file?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "Keep the original according to the approved record policy and identify the presentation image as a derived copy. Do not silently replace the capture record."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Further reading"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Ettorre et al.: Standards for digital photography - basic views and guidelines",
+                "marks": [
+                  {
+                    "type": "link",
+                    "attrs": {
+                      "href": "https://pubmed.ncbi.nlm.nih.gov/16427297/"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "06 · Put the workflow together",
+      "title": "Capstone: produce and review a model portfolio",
+      "minutes": 30,
+      "outcome": "Demonstrate a documented capture-review-repeat workflow using a non-patient subject.",
+      "exercise": "Use the capstone pages in the workbook. Self-check eight criteria: purpose, setup record, complete planned sequence, orientation, relevant sharpness, controlled exposure, traceable files and a justified correction. Ask an academy supervisor to review the portfolio before applying the workflow clinically.",
+      "check": "Does checking every capstone box establish clinical competence or accreditation?",
+      "answer": "No. This is a structured self-review. Clinical competence and any formal credit require the academy’s approved supervision and assessment arrangements. The platform’s post-test measures knowledge, not image-capture skill.",
+      "sources": [],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "30 minutes, including practice. Outcome: Demonstrate a documented capture-review-repeat workflow using a non-patient subject."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Your capstone combines the earlier activities into one small, traceable portfolio. Work with a dental model or equivalent non-patient teaching model. There is no patient upload and no automatic image grading in this course. Use the workbook to record your decisions and retain the files locally."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Prepare a setup card and a five-view intra-oral model shot list: frontal, right lateral, left lateral, upper occlusal and lower occlusal. Add a repeat capture of the weakest view after a documented correction. If an equipment limitation prevents a planned view, state the limitation and the supervised practice you still need rather than pretending the view was obtained."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "The aim is a repeatable process. A portfolio made with expensive equipment but without labels, a setup record or a quality decision misses the learning outcome. A thoughtful record of an unsuccessful attempt can be more useful for feedback than an unexplained polished image."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Before: write the purpose, setup card, view list and model-only handling plan."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "During: capture the planned views and check each before moving on."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "After: complete a quality decision for every frame and repeat one weak image."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Handoff: create the file index and a short explanation of the correction and remaining limitations."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Use the capstone pages in the workbook. Self-check eight criteria: purpose, setup record, complete planned sequence, orientation, relevant sharpness, controlled exposure, traceable files and a justified correction. Ask an academy supervisor to review the portfolio before applying the workflow clinically."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Does checking every capstone box establish clinical competence or accreditation?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "No. This is a structured self-review. Clinical competence and any formal credit require the academy’s approved supervision and assessment arrangements. The platform’s post-test measures knowledge, not image-capture skill."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "module": "06 · Put the workflow together",
+      "title": "Consolidate your learning and prepare for the post-test",
+      "minutes": 10,
+      "outcome": "Turn your practice findings into a usable plan for the next session.",
+      "exercise": "Write a 30-day practice plan: two model-based sessions, one peer review and one check of your local consent, equipment and storage protocols. Define how you will tell whether your process is more repeatable.",
+      "check": "You score 12 correct answers out of 16. Has an 80% pass threshold been reached?",
+      "answer": "No. Twelve out of sixteen is 75%. Thirteen out of sixteen is 81.25%, the first whole-question score that reaches 80%. Review the uncertain concepts before another attempt.",
+      "sources": [],
+      "richContent": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "10 minutes, including practice. Outcome: Turn your practice findings into a usable plan for the next session."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "The idea in practice"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Look back at the baseline image from lesson one. Identify one improvement in the image itself and one improvement in the way you prepared, labelled or reviewed it. Explain each improvement in terms of a decision you can repeat. “It looks better” is less useful than “I repeated the same camera position and checked the intended feature at enlarged playback.”"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "The final assessment contains 16 scenario-based questions. It covers preparation and permission, camera controls, lighting, consistent views, image review, record handling and the limits of this course. The pass mark is 80%; with 16 equally weighted questions that means at least 13 correct. You have three initial attempts. If you exhaust them, the platform offers an academy retake request."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Complete all required lessons before expecting course completion. A passed post-test does not bypass access, license or certificate requirements. This review edition carries no approved education credits. After the assessment, return to any weak topic and revise your setup card or shot list."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Your working method"
+              }
+            ]
+          },
+          {
+            "type": "bulletList",
+            "content": [
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Write one action to keep, one action to change and one question for your supervisor."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Check that your workbook has a setup card, view index, quality review and capstone reflection."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Use the curriculum to revisit the concepts you cannot yet explain without guessing."
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "content": [
+                  {
+                    "type": "paragraph",
+                    "content": [
+                      {
+                        "type": "text",
+                        "text": "Open the post-test when your required lessons are complete."
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Try it"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Write a 30-day practice plan: two model-based sessions, one peer review and one check of your local consent, equipment and storage protocols. Define how you will tell whether your process is more repeatable."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "attrs": {
+              "level": 2
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "Check your understanding"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "You score 12 correct answers out of 16. Has an 80% pass threshold been reached?"
+              }
+            ]
+          },
+          {
+            "type": "blockquote",
+            "content": [
+              {
+                "type": "paragraph",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "No. Twelve out of sixteen is 75%. Thirteen out of sixteen is 81.25%, the first whole-question score that reaches 80%. Review the uncertain concepts before another attempt."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "quiz": {
+    "passMark": 80,
+    "maxAttempts": 3,
+    "questions": [
+      {
+        "id": "photo-01",
+        "prompt": "Before making a training image, which question best guides the capture?",
+        "options": [
+          "Which filter looks most impressive?",
+          "What must this frame show for its stated purpose?",
+          "How many copies can I upload?",
+          "Which device costs the most?"
+        ],
+        "correct": 1
+      },
+      {
+        "id": "photo-02",
+        "prompt": "Permission was recorded for a patient care photograph. Public promotional use is now proposed. What is the appropriate next step?",
+        "options": [
+          "Post it because it was already photographed",
+          "Crop the eyes and post automatically",
+          "Check the separately approved permission and governance process",
+          "Ask a colleague to post it instead"
+        ],
+        "correct": 2
+      },
+      {
+        "id": "photo-03",
+        "prompt": "What is an appropriate practice subject for this course’s capstone?",
+        "options": [
+          "A patient photographed without supervision",
+          "A screenshot from a private patient record",
+          "A dental model with a fictional training identifier",
+          "An image copied from social media"
+        ],
+        "correct": 2
+      },
+      {
+        "id": "photo-04",
+        "prompt": "Which change is generally associated with increasing the f-number, all other exposure inputs unchanged?",
+        "options": [
+          "More light and less depth of field",
+          "Less light and potentially more depth of field",
+          "A guaranteed removal of motion blur",
+          "A change in patient permission"
+        ],
+        "correct": 1
+      },
+      {
+        "id": "photo-05",
+        "prompt": "A bright frame is blurred around the intended feature. What should you review first?",
+        "options": [
+          "Focus placement, motion and depth of field",
+          "The filename only",
+          "Whether the image can be made brighter",
+          "The number of quiz attempts"
+        ],
+        "correct": 0
+      },
+      {
+        "id": "photo-06",
+        "prompt": "Why should flash shutter-speed limits be checked in the device manual?",
+        "options": [
+          "All cameras share one universal limit",
+          "Flash sync is equipment-specific",
+          "It replaces the need for focusing",
+          "It determines the legal retention period"
+        ],
+        "correct": 1
+      },
+      {
+        "id": "photo-07",
+        "prompt": "A colour cast appears when the lighting arrangement changes. What is the best first response?",
+        "options": [
+          "Recolour the subject until it looks attractive",
+          "Increase image sharpening",
+          "Review the lighting and documented white-balance workflow",
+          "Hide the image from the index"
+        ],
+        "correct": 2
+      },
+      {
+        "id": "photo-08",
+        "prompt": "Why might two sharp profile images still be misleading when compared?",
+        "options": [
+          "They were saved in the same folder",
+          "Their camera or subject positions differ",
+          "Both have labels",
+          "They use the same background"
+        ],
+        "correct": 1
+      },
+      {
+        "id": "photo-09",
+        "prompt": "Which set matches the five intra-oral model views practised in this course?",
+        "options": [
+          "Five frontal duplicates",
+          "Frontal, right lateral, left lateral, upper occlusal, lower occlusal",
+          "Three profiles and two portraits",
+          "Any five attractive images"
+        ],
+        "correct": 1
+      },
+      {
+        "id": "photo-10",
+        "prompt": "The side of a lateral image is uncertain. What should happen?",
+        "options": [
+          "Guess from the photographer’s viewpoint",
+          "Use it without a label",
+          "Resolve orientation using the capture record and approved convention",
+          "Delete every related record immediately"
+        ],
+        "correct": 2
+      },
+      {
+        "id": "photo-11",
+        "prompt": "A reflected model view contains a large obstruction. What is the most useful action?",
+        "options": [
+          "Repeat it after addressing the obstruction",
+          "Label it complete because it is sharp",
+          "Digitally invent the hidden anatomy",
+          "Change the date in the filename"
+        ],
+        "correct": 0
+      },
+      {
+        "id": "photo-12",
+        "prompt": "What does a quality gate check beyond whether a picture looks bright?",
+        "options": [
+          "Purpose, clarity, geometry, orientation and sequence completeness",
+          "Only the price of the lens",
+          "Only file size",
+          "Only how fast the session ended"
+        ],
+        "correct": 0
+      },
+      {
+        "id": "photo-13",
+        "prompt": "After creating a derived presentation copy, which practice preserves provenance?",
+        "options": [
+          "Silently overwrite the original",
+          "Keep the original and record the permitted transformation",
+          "Discard all capture notes",
+          "Treat the copy as an unedited capture"
+        ],
+        "correct": 1
+      },
+      {
+        "id": "photo-14",
+        "prompt": "Where should real patient images be stored and shared?",
+        "options": [
+          "In this course workbook",
+          "In any personal chat application",
+          "Through the organisation’s approved clinical systems and policies",
+          "In a publicly accessible training folder"
+        ],
+        "correct": 2
+      },
+      {
+        "id": "photo-15",
+        "prompt": "What does the capstone’s self-review rubric establish?",
+        "options": [
+          "Automatic clinical competence",
+          "Guaranteed accreditation",
+          "A structured review of the learner’s model-based process",
+          "Approval to use patient images publicly"
+        ],
+        "correct": 2
+      },
+      {
+        "id": "photo-16",
+        "prompt": "How many correct answers are needed to reach an 80% threshold on a 16-question equally weighted test?",
+        "options": [
+          "11",
+          "12",
+          "13",
+          "16"
+        ],
+        "correct": 2
+      }
+    ]
+  },
+  "references": [
+    {
+      "id": "consent",
+      "title": "GDC: Standards for the dental team, confidentiality and images",
+      "url": "https://www.gdc-uk.org/docs/default-source/information-standards-and-guidance/guidance-for-employers-of-trainees-students/new-standards-for-the-dental-team.pdf?sfvrsn=cbbacd84_2"
+    },
+    {
+      "id": "infection",
+      "title": "CDC: Dental sterilization and disinfection",
+      "url": "https://www.cdc.gov/dental-infection-control/hcp/summary/sterilization-disinfection.html"
+    },
+    {
+      "id": "aperture",
+      "title": "Nikon: Understanding maximum aperture",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/understanding-maximum-aperture"
+    },
+    {
+      "id": "iso",
+      "title": "Nikon: ISO control",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/products-and-innovation/iso-control"
+    },
+    {
+      "id": "wb",
+      "title": "Nikon: Setting white balance",
+      "url": "https://www.nikonusa.com/learn-and-explore/c/tips-and-techniques/setting-white-balance"
+    },
+    {
+      "id": "lighting",
+      "title": "Ahmad: Digital dental photography, Part 5 - lighting",
+      "url": "https://www.nature.com/articles/sj.bdj.2009.558"
+    },
+    {
+      "id": "settings",
+      "title": "Ahmad: Digital dental photography, Part 6 - camera settings",
+      "url": "https://www.nature.com/articles/sj.bdj.2009.607"
+    },
+    {
+      "id": "views",
+      "title": "Bengel: Standardization in dental photography",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3863799/"
+    },
+    {
+      "id": "portrait",
+      "title": "Claman et al.: Standardized portrait photography for dental patients",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2403072/"
+    },
+    {
+      "id": "intraoral",
+      "title": "Ahmad: Digital dental photography, Part 8 - intra-oral set-ups",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19696825/"
+    },
+    {
+      "id": "protocol",
+      "title": "Ong et al.: A standardized approach to extra-oral and intra-oral digital photography",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35938814/"
+    },
+    {
+      "id": "records",
+      "title": "Ettorre et al.: Standards for digital photography - basic views and guidelines",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/16427297/"
+    },
+    {
+      "id": "quality",
+      "title": "Bloemen et al.: Development and evaluation of a standardized photography protocol",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5052606/"
+    }
+  ],
+  "reviewStatus": "Academy clinical, regional policy and accreditation review pending. No patient images or clinical data are included."
+}

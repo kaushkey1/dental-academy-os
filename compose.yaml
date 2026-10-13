@@ -1,0 +1,19 @@
+# Local PostgreSQL only. Never use these development credentials in a hosted environment.
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: academy
+      POSTGRES_USER: academy_migrator
+      POSTGRES_PASSWORD: local-development-only
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - academy_pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U academy_migrator -d academy"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  academy_pg:

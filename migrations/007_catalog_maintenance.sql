@@ -1,0 +1,21 @@
+ALTER TABLE programs ADD COLUMN revision integer NOT NULL DEFAULT 1 CHECK(revision>0);
+ALTER TABLE programs ADD COLUMN archived_at timestamptz;
+ALTER TABLE offerings ADD COLUMN revision integer NOT NULL DEFAULT 1 CHECK(revision>0);
+ALTER TABLE offerings ADD COLUMN archived_at timestamptz;
+ALTER TABLE offerings ADD COLUMN credit_type text NOT NULL DEFAULT '';
+UPDATE offerings o SET credit_type=p.credit_type FROM programs p WHERE p.tenant_id=o.tenant_id AND p.id=o.program_id;
+CREATE FUNCTION offering_credit_default() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN
+ IF NEW.credit_type='' THEN SELECT credit_type INTO NEW.credit_type FROM programs WHERE tenant_id=NEW.tenant_id AND id=NEW.program_id; END IF;
+ RETURN NEW;
+END $$;
+CREATE TRIGGER offering_credit_default BEFORE INSERT ON offerings FOR EACH ROW EXECUTE FUNCTION offering_credit_default();
+ALTER TABLE tickets ADD COLUMN active boolean NOT NULL DEFAULT true;
+ALTER TABLE tickets ADD COLUMN revision integer NOT NULL DEFAULT 1 CHECK(revision>0);
+ALTER TABLE tickets ADD CONSTRAINT ticket_sale_window CHECK(sale_starts IS NULL OR sale_ends IS NULL OR sale_ends>sale_starts);
+ALTER TABLE coupons ADD COLUMN active boolean NOT NULL DEFAULT true;
+ALTER TABLE coupons ADD COLUMN revision integer NOT NULL DEFAULT 1 CHECK(revision>0);
+ALTER TABLE coupons ADD COLUMN program_id uuid;
+ALTER TABLE coupons ADD CONSTRAINT coupon_program_fk FOREIGN KEY(tenant_id,program_id) REFERENCES programs(tenant_id,id);
+ALTER TABLE coupons ADD CONSTRAINT coupon_one_scope CHECK(offering_id IS NULL OR program_id IS NULL);
+CREATE UNIQUE INDEX coupon_case_unique ON coupons(tenant_id,lower(code));
+INSERT INTO schema_migrations(version) VALUES(7);

@@ -1,0 +1,11 @@
+# Builds an image only. Hosting and deployment are deliberately deferred.
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: [build, '-t', '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/academy:$COMMIT_SHA', '.']
+images:
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPOSITORY}/academy:$COMMIT_SHA'
+substitutions:
+  _REGION: asia-south1
+  _REPOSITORY: dental-academy
+options:
+  logging: CLOUD_LOGGING_ONLY

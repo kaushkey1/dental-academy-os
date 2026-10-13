@@ -1,0 +1,53 @@
+# Reference only. Replace every REPLACE_* value after the hosting decision.
+# Do not deploy until docs/RELEASE.md gates have passed.
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: dental-academy-os
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+        autoscaling.knative.dev/maxScale: '10'
+        run.googleapis.com/cloudsql-instances: REPLACE_PROJECT:REPLACE_REGION:REPLACE_INSTANCE
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      serviceAccountName: REPLACE_RUNTIME_SERVICE_ACCOUNT
+      containerConcurrency: 40
+      timeoutSeconds: 60
+      containers:
+        - image: REPLACE_IMAGE_DIGEST
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: '1'
+              memory: 512Mi
+          env:
+            - name: NODE_ENV
+              value: production
+            - name: APP_MODE
+              value: production
+            - name: PUBLIC_ORIGIN
+              value: https://REPLACE_PLATFORM_DOMAIN
+            - name: SESSION_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: academy-session-secret
+                  key: latest
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: academy-runtime-database-url
+                  key: latest
+            - name: TENANT_SECRETS_JSON
+              valueFrom:
+                secretKeyRef:
+                  name: academy-provider-secrets
+                  key: latest
+          startupProbe:
+            httpGet:
+              path: /api/health
+            periodSeconds: 10
+            failureThreshold: 12

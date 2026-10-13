@@ -1,0 +1,150 @@
+export interface WebsiteIntegration {
+  academy: { name: string; slug: string; currency: string };
+  development: boolean;
+  baseUrl: string;
+  learnerUrl: string;
+  publishableKey: string | null;
+  allowedOrigins: string[];
+  keyUpdatedAt: string | null;
+  offerings: { id: string; title: string; kind: string }[];
+}
+
+export const websiteEndpoints = [
+  {
+    path: 'programs',
+    method: 'GET',
+    label: 'Programs',
+    description: 'Published program descriptions, faculty and credits.',
+  },
+  {
+    path: 'runs',
+    method: 'GET',
+    label: 'Workshops',
+    description: 'Workshop dates, venues, tickets and available seats.',
+  },
+  {
+    path: 'courses',
+    method: 'GET',
+    label: 'Online courses',
+    description: 'Published course listings and access prices.',
+  },
+  { path: 'offers', method: 'GET', label: 'Offers', description: 'Current public discount codes.' },
+  {
+    path: 'faculty',
+    method: 'GET',
+    label: 'Faculty',
+    description: 'Faculty profiles from published programs.',
+  },
+  {
+    path: 'checkout-sessions',
+    method: 'POST',
+    label: 'Checkout link',
+    description: 'Get a hosted booking URL for an open workshop or course.',
+  },
+  {
+    path: 'inquiries',
+    method: 'POST',
+    label: 'Inquiry / waitlist',
+    description: 'Send a website enquiry to this academy’s lead inbox.',
+  },
+] as const;
+export type WebsiteOperation = (typeof websiteEndpoints)[number]['path'];
+
+export function websiteExampleBody(operation: WebsiteOperation, offeringId: string) {
+  if (operation === 'checkout-sessions')
+    return {
+      offeringId: offeringId || 'YOUR_OFFERING_ID',
+      urlParams: { utm_source: 'academy_website' },
+    };
+  if (operation === 'inquiries')
+    return {
+      name: 'Website visitor',
+      mobile: '+919876543210',
+      email: 'visitor@example.com',
+      message: 'Please share more information about this program.',
+      ...(offeringId ? { offeringId } : {}),
+      waitlist: false,
+      urlParams: { utm_source: 'academy_website' },
+    };
+  return undefined;
+}
+const shellQuote = (value: string) => "'" + value.replaceAll("'", "'\\''") + "'";
+
+export function websiteSnippet(
+  info: WebsiteIntegration,
+  operation: WebsiteOperation,
+  language: 'javascript' | 'curl',
+  offeringId = '',
+) {
+  const body = websiteExampleBody(operation, offeringId);
+  const key = info.publishableKey || 'YOUR_PUBLISHABLE_KEY';
+  const url = `${info.baseUrl}/${operation}`;
+  if (language === 'curl')
+    return `curl --fail-with-body ${shellQuote(url)} \\\n+  -H ${shellQuote('X-Publishable-Key: ' + key)}${body ? ` \\\n+  -H 'Content-Type: application/json' \\\n+  --data ${shellQuote(JSON.stringify(body, null, 2))}` : ''}`;
+  return `const response = await fetch(${JSON.stringify(url)}, {
+  method: ${JSON.stringify(body ? 'POST' : 'GET')},
+  credentials: 'omit',
+  headers: {
+    'X-Publishable-Key': ${JSON.stringify(key)}${body ? ",\n    'Content-Type': 'application/json'" : ''}
+  }${body ? `,\n  body: JSON.stringify(${JSON.stringify(body, null, 2).replaceAll('\n', '\n  ')})` : ''}
+});
+const result = await response.json();
+if (!response.ok) throw new Error(result.error || 'API request failed');
+${operation === 'checkout-sessions' ? 'window.location.assign(result.checkoutUrl);' : operation === 'inquiries' ? '// Show your visitor a confirmation when result.received is true.\nconsole.log(result.received);' : '// Render these records using textContent or your framework’s escaped text output.\nconsole.log(result.data);'}`;
+}
+
+export function websiteGuide(info: WebsiteIntegration) {
+  const offeringId = info.offerings[0]?.id || '';
+  return `# ${info.academy.name} — website integration
+
+Environment: ${info.development ? 'LOCAL DEVELOPMENT — these URLs only work on the computer running the app.' : 'Deployed environment'}
+API base URL: ${info.baseUrl}
+Academy slug: ${info.academy.slug}
+Publishable key: ${info.publishableKey || 'Create a key in Academy settings first.'}
+Learner portal: ${info.learnerUrl}
+Allowed website origins: ${info.allowedOrigins.join(', ') || 'None configured yet'}
+
+## Connect your website
+
+1. Add each exact website origin in Academy settings → Website & API (include www separately).
+2. Send X-Publishable-Key on every request. Do not send staff session cookies.
+3. Use the catalog to render listings and the checkout endpoint for your booking button.
+4. Test from the website itself to verify its origin is allowed.
+
+This is a publishable, browser-safe key for this academy’s public catalog, checkout links and enquiries.
+It does not grant staff access, expose learner records or authorize payments.
+Allowed origins control browser access; server-to-server integrations can send the key without an Origin header.
+Never put payment-provider or server secrets in website code. Replacing a key invalidates the old one immediately.
+After deployment, copy the updated base URL and examples from settings. Do not publish localhost URLs.
+
+## API contract
+
+GET responses: { "version": "v1", "data": [...] }. Lists are not paginated yet; runs/courses return at most 200 offerings combined.
+Ticket price and deposit are integer minor currency units (paise/cents); divide by 100 for display. Currency: ${info.academy.currency}.
+Read offering.status before showing a booking button; only open offerings accept checkout links. Seats are reserved during hosted checkout, not when a link is generated.
+POST checkout-sessions: { offeringId, urlParams? } → 201 { checkoutUrl }. This creates a URL, not a paid order.
+POST inquiries: { name, mobile, email, message, offeringId?, waitlist?, urlParams? } → 201 { received: true }.
+Use an international mobile number. email may be an empty string; message is required (up to 3000 characters).
+Set waitlist: true to create a waitlist lead. Inquiry submission does not enroll or reserve a seat.
+urlParams is an optional object with up to 40 string values. Use it for campaign tracking.
+Errors: { error, code }. 400 invalid input; 401 invalid key; 403 website origin denied; 404 unpublished/missing resource; 429 rate limit.
+Current limits: 240 API requests/minute/IP per server instance; additionally 20 v1 enquiries/10 minutes/IP per instance. Back off on 429; do not blindly retry enquiry submissions.
+The public API does not expose course lessons or student/payment records. Outbound webhook subscriptions are not available yet.
+
+${websiteEndpoints
+  .map(
+    (endpoint) => `## ${endpoint.method} /${endpoint.path}
+
+${endpoint.description}
+
+\`\`\`javascript
+${websiteSnippet(info, endpoint.path, 'javascript', offeringId)}
+\`\`\`
+
+\`\`\`sh
+${websiteSnippet(info, endpoint.path, 'curl', offeringId)}
+\`\`\``,
+  )
+  .join('\n\n')}
+`;
+}

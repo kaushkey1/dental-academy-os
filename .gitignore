@@ -1,0 +1,13 @@
+node_modules/
+dist/
+dist-server/
+.local/
+.env
+.env.*
+!.env.example
+coverage/
+public/pdfjs/
+.netlify/
+tmp/
+output/
+/*.png
