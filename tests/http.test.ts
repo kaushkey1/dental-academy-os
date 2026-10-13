@@ -49,6 +49,11 @@ after(async () => {
   await db?.close();
 });
 test('staff authentication is required and origin checks reject foreign writes', async () => {
+  assert.equal(
+    (await request('/auth/demo', 'POST', { slug: 'icode', role: 'admin', code: 'anything' }))
+      .status,
+    404,
+  );
   assert.equal((await request('/workspace')).status, 401);
   const bad = await fetch(base + '/programs', {
     method: 'POST',

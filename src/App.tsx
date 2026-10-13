@@ -81,6 +81,7 @@ export function Login({
   learner?: boolean;
 }) {
   const [slug, setSlug] = useState(initialSlug),
+    [demoRole, setDemoRole] = useState(learner ? 'learner' : 'admin'),
     [identifier, setIdentifier] = useState(''),
     [challenge, setChallenge] = useState<Row | null>(null),
     [bootstrap, setBootstrap] = useState<Row | null>(null);
@@ -131,13 +132,59 @@ export function Login({
         <div className="eyebrow">
           {learner ? 'YOUR LEARNING JOURNEY' : 'YOUR ACADEMY WORKSPACE'}
         </div>
-        <h2>{challenge ? 'Check your messages.' : 'Welcome back.'}</h2>
+        <h2>
+          {bootstrap?.demo
+            ? 'Explore your academy.'
+            : challenge
+              ? 'Check your messages.'
+              : 'Welcome back.'}
+        </h2>
         <p className="muted">
-          {challenge
-            ? 'Enter your six-digit code to continue.'
-            : 'Sign in securely. No password to remember.'}
+          {bootstrap?.demo
+            ? 'Choose an academy and role. Enter the access code shared by your host.'
+            : challenge
+              ? 'Enter your six-digit code to continue.'
+              : 'Sign in securely. No password to remember.'}
         </p>
-        {!challenge ? (
+        {bootstrap?.demo ? (
+          <Form
+            label="Open demo"
+            onSubmit={async (d) => {
+              await api('/auth/demo', 'POST', {
+                slug,
+                role: demoRole,
+                code: String(d.get('demoCode')),
+              });
+              onLogin();
+            }}
+          >
+            <Field label="Academy">
+              <select value={slug} onChange={(e) => setSlug(e.target.value)}>
+                {bootstrap.academies.map((a: Row) => (
+                  <option key={a.slug} value={a.slug}>
+                    {a.name}
+                  </option>
+                ))}
+              </select>
+            </Field>
+            <Field label="Explore as">
+              <select value={demoRole} onChange={(e) => setDemoRole(e.target.value)}>
+                <option value="admin">Academy administrator</option>
+                <option value="coordinator">Coordinator</option>
+                <option value="marketing">Marketing</option>
+                <option value="faculty">Faculty</option>
+                <option value="learner">Learner</option>
+              </select>
+            </Field>
+            <Field label="Demo access code">
+              <input name="demoCode" type="password" autoComplete="current-password" required />
+            </Field>
+            <div className="notice">
+              Shared demonstration workspace. Changes are saved and visible to other reviewers.
+              Payments and message delivery are disconnected.
+            </div>
+          </Form>
+        ) : !challenge ? (
           <Form
             label="Send sign-in code"
             onSubmit={async () =>
@@ -418,11 +465,11 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
             <div className="avatar small">{initials(identity.name)}</div>
           </div>
         </header>
-        {data.development && (
+        {(data.development || data.demo) && (
           <div className="environment-strip">
             <span className="status-dot" />
-            Development workspace <span>·</span> Sample data <span>·</span> Live services are not
-            connected
+            {data.demo ? 'Demo workspace' : 'Development workspace'} <span>·</span> Sample data{' '}
+            <span>·</span> Live services are not connected
           </div>
         )}
         <main className="main-content">

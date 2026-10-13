@@ -539,6 +539,11 @@ export function LearnerPortal({ identity, logout }: { identity: Row; logout: () 
   const t = data.tenant;
   return (
     <div className="portal learner-portal">
+      {identity.demo && (
+        <div className="environment-strip">
+          Demo workspace · Sample learning records · Changes are shared with other reviewers
+        </div>
+      )}
       <PortalHeader
         name={t.name}
         action={

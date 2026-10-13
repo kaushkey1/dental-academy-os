@@ -3,7 +3,7 @@
 Updated: October 14, 2026. **Status: implementation in progress; not ready for live use.**
 
 User decisions: BOTH academies, INCLUDING complete online courses. Target is October 31,
-2026 (Asia/Kolkata planning date). Hosting comes last, probably GCP. A working prototype
+2026 (Asia/Kolkata planning date). The user subsequently selected GitHub + Netlify hosting, with a separate copy of local data for demonstrations; preserve GCP compatibility. A working prototype
 is not the delivery target. The full Phase 1 PRD remains the acceptance contract.
 
 The original PRD estimates 15–21 weeks with 3–4 engineers plus a designer. October 31
@@ -33,7 +33,7 @@ release gates; do not silently reduce scope or label open work as complete.
 | Privacy             | Consent record; tenant RLS; no patient entities; safe CSV                                                                                                                                                                                                                                | Academy-approved notices/retention; export/deletion jobs; data inventory; recovery/legal review                                                                                                                                                                          |
 | Infrastructure      | Production env guard; stateless Node build; Docker/GCP templates; CI definition                                                                                                                                                                                                          | Docker execution; GCP provisioning; secrets; storage/jobs; monitoring; backups/restore; custom domains; load/performance tests                                                                                                                                           |
 | Migration           | None yet                                                                                                                                                                                                                                                                                 | Icode catalog; LearnDash program/run dedupe; learner/course access import; historical certificate import; counts and reconciliation; old URL redirects                                                                                                                   |
-| QA                  | 213 invariant/authenticated HTTP/provider-contract tests; production build; targeted desktop/mobile browser checks                                                                                                                                                                       | Browser visual/keyboard/responsive checks; real Postgres concurrency; real provider staging; security review; both-academy acceptance sign-off                                                                                                                           |
+| QA                  | 216 invariant/authenticated HTTP/provider-contract tests; production build; targeted desktop/mobile browser checks                                                                                                                                                                       | Browser visual/keyboard/responsive checks; real Postgres concurrency; real provider staging; security review; both-academy acceptance sign-off                                                                                                                           |
 
 ## Next implementation slices
 
@@ -652,3 +652,22 @@ complete). The 390px inbox has no horizontal overflow (document 390/390, dialog 
 Desktop/mobile captures are in ../../work/journey-review/course-updates/. No payment records,
 course publishing/prices, teaching approvals or real-provider settings were changed. Actual
 Postgres concurrency, scheduler capacity/monitoring and WhatsApp/email delivery remain open.
+
+
+October 14 Netlify preparation: the private kaushkey1/dental-academy-os repository is
+created and connected to the new dental-academy-os-kaushkey Netlify project with a read-only
+deploy key and push webhook. Builds are paused until database provisioning is complete.
+Express Functions, scheduled course updates, private Blobs storage, a restricted runtime
+connection guard and explicitly enabled access-code demo sign-in are implemented. Both
+academies and all five existing role types are selectable; the hosted identity mappings
+will be populated during import. Demo sign-in checks active roles and uses durable attempt
+limits. Normal OTP delivery is blocked in demo mode; no development OTP is published.
+
+The local database was stopped, snapshotted consistently and restarted. The export excludes
+auth challenges. Six local document/proof objects have been copied to the new project's
+private Blobs store and verified by SHA-256. The database import and live deployment are
+NOT complete: Netlify's default read-only access for personal access tokens requires the
+owner's approval before temporary write access can be enabled. Do not claim the demo is live.
+Production build, Netlify function bundling and all 216 tests pass, including three demo
+auth tests. New document/proof uploads are explicitly limited to 4 MB on Netlify. The
+existing HLS bundle size warning remains. See NETLIFY.md for the deployment/runbook.

@@ -298,7 +298,10 @@ export function OfflinePayments({
             onSubmit={async (f) => {
               const file = f.get('proof') as File;
               if (!file?.size) throw new Error('Select a proof file.');
-              if (file.size > 5 * 1024 ** 2) throw new Error('Proof must be 5 MB or smaller.');
+              if (file.size > (data.maxProofBytes || 5 * 1024 ** 2))
+                throw new Error(
+                  `Proof must be ${(data.maxProofBytes || 5 * 1024 ** 2) / 1024 ** 2} MB or smaller.`,
+                );
               const record = await api(`/orders/${data.id}/offline-payments`, 'POST', {
                 id: requestId.current,
                 amount: amountMinor(String(f.get('amount'))),
@@ -357,7 +360,7 @@ export function OfflinePayments({
             </Field>
             <Field
               label="Payment proof"
-              hint="PDF (1–30 pages), PNG or JPEG, up to 5 MB. Only payment staff can access the file."
+              hint={`PDF (1–30 pages), PNG or JPEG, up to ${(data.maxProofBytes || 5 * 1024 ** 2) / 1024 ** 2} MB. Only payment staff can access the file.`}
             >
               <input
                 name="proof"

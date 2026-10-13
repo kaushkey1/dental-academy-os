@@ -49,9 +49,12 @@ export function MediaLibrary({
     }
     if (
       kind === 'pdf' &&
-      (file.size > 20 * 1024 ** 2 || !file.name.toLowerCase().endsWith('.pdf'))
+      (file.size > (data?.maxDocumentBytes || 20 * 1024 ** 2) ||
+        !file.name.toLowerCase().endsWith('.pdf'))
     ) {
-      setError('Choose a PDF of up to 20 MB.');
+      setError(
+        `Choose a PDF of up to ${(data?.maxDocumentBytes || 20 * 1024 ** 2) / 1024 ** 2} MB.`,
+      );
       return;
     }
     if (resume) {
@@ -179,7 +182,11 @@ export function MediaLibrary({
         ) : (
           <>
             <Field
-              label={kind === 'pdf' ? 'Choose a PDF (up to 20 MB)' : 'Choose a video (up to 10 GB)'}
+              label={
+                kind === 'pdf'
+                  ? `Choose a PDF (up to ${(data?.maxDocumentBytes || 20 * 1024 ** 2) / 1024 ** 2} MB)`
+                  : 'Choose a video (up to 10 GB)'
+              }
             >
               <input
                 ref={fileRef}

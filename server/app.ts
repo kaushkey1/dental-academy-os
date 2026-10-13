@@ -68,7 +68,8 @@ import { randomUUID, createHash } from 'node:crypto';
 import { z } from 'zod';
 import { resolve } from 'node:path';
 import { type Database, type Row, type Queryable, tenantTx, one } from './db.ts';
-import { development, origin, tenantSecrets } from './config.ts';
+import { development, demo, origin, tenantSecrets } from './config.ts';
+import { demoIdentity } from './demo.ts';
 import { AppError, assert, requireValue } from './errors.ts';
 import {
   authenticate,
@@ -294,11 +295,25 @@ export function createApp(
   app.get('/api/bootstrap', async (_req, res) =>
     res.json({
       development,
-      academies: development
-        ? (await db.query('SELECT id,name,slug,currency FROM tenant_directory')).rows
-        : [],
+      demo,
+      academies:
+        development || demo
+          ? (await db.query('SELECT id,name,slug,currency FROM tenant_directory')).rows
+          : [],
     }),
   );
+  app.post('/api/auth/demo', async (req, res) => {
+    const b = z
+      .object({
+        slug: text,
+        role: z.enum(['admin', 'coordinator', 'marketing', 'faculty', 'learner']),
+        code: z.string().min(1).max(200),
+      })
+      .parse(req.body);
+    const identity = await demoIdentity(db, b.slug, b.role, b.code, req.ip || 'unknown');
+    await issueSession(res, identity);
+    res.json({ ...identity, demo });
+  });
   app.post(
     '/api/auth/request',
     rateLimit({
@@ -308,6 +323,7 @@ export function createApp(
       legacyHeaders: false,
     }),
     async (req, res) => {
+      assert(!demo, 'Use the protected demo sign-in to explore this workspace', 403);
       const b = z
         .object({ slug: text, kind: z.enum(['staff', 'learner']), identifier: text })
         .parse(req.body);
@@ -335,7 +351,7 @@ export function createApp(
     res.clearCookie('academy_session', { path: '/' });
     res.json({ ok: true });
   });
-  app.get('/api/me', async (req, res) => res.json(await authenticate(db, req)));
+  app.get('/api/me', async (req, res) => res.json({ ...(await authenticate(db, req)), demo }));
   type Action = (tx: Queryable, i: Identity, req: Request, res: Response) => Promise<any>;
   const staff = (permission: string, fn: Action) => async (req: Request, res: Response) => {
     const i = await authenticate(db, req);
@@ -421,6 +437,7 @@ export function createApp(
         settings,
         activity,
         development,
+        demo,
       };
     }),
   );
@@ -993,6 +1010,7 @@ export function createApp(
           )
         ).rows.map(publicMedia),
         documentsEnabled: !!media.storage,
+        maxDocumentBytes: process.env.NETLIFY ? 4 * 1024 ** 2 : 20 * 1024 ** 2,
         documentStorage: media.storage?.kind || 'unconfigured',
         videosEnabled: !!media.video,
       };
@@ -2020,7 +2038,7 @@ export function createApp(
           process.env.MUX_SIGNING_PRIVATE_KEY
         ),
         whatsapp: false,
-        storage: media.storage?.kind === 'gcs',
+        storage: !!media.storage && media.storage.kind !== 'local',
         storageMode: media.storage?.kind || 'unconfigured',
       };
     }),

@@ -31,6 +31,7 @@ export async function paymentSummary(tx: Queryable, i: Identity, id: string) {
     needsPaymentReview,
     documents: await documentList(tx, o.id, i.kind === 'staff'),
     canManageBilling: i.kind === 'staff' && i.role === 'admin',
+    maxProofBytes: (process.env.NETLIFY ? 4 : 5) * 1024 ** 2,
     ...o,
     ...(i.kind === 'staff'
       ? {

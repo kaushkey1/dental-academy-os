@@ -17,8 +17,8 @@ export async function createDatabase(url?: string): Promise<Database> {
   if (url?.startsWith('postgres')) {
     const pool = new pg.Pool({
       connectionString: url,
-      max: 10,
-      connectionTimeoutMillis: 5000,
+      max: process.env.NETLIFY ? 2 : 10,
+      connectionTimeoutMillis: 15000,
       idleTimeoutMillis: 30000,
     });
     return {

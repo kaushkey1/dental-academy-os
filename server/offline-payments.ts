@@ -6,7 +6,7 @@ import type { Identity } from './auth.ts';
 import type { MediaServices } from './media.ts';
 import { assert, AppError, requireValue } from './errors.ts';
 import { authorize, captureApprovedOfflinePayment, event } from './domain.ts';
-const MAX_PROOF = 5 * 1024 ** 2;
+const MAX_PROOF = (process.env.NETLIFY ? 4 : 5) * 1024 ** 2;
 const inputSchema = z.object({
   id: z.string().uuid(),
   amount: z.number().int().positive().max(2147483647),
@@ -185,7 +185,7 @@ function mayEdit(i: Identity, r: Row) {
 export async function validateProof(bytes: Buffer, mime: string) {
   assert(
     Buffer.isBuffer(bytes) && bytes.length > 0 && bytes.length <= MAX_PROOF,
-    'Choose a PDF, PNG or JPEG proof of up to 5 MB',
+    `Choose a PDF, PNG or JPEG proof of up to ${MAX_PROOF / 1024 ** 2} MB`,
   );
   try {
     if (mime === 'application/pdf') {

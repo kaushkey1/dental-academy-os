@@ -2,10 +2,11 @@ import { mkdir, readFile, writeFile, rename, unlink } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { randomUUID, createHash } from 'node:crypto';
 import { Storage } from '@google-cloud/storage';
+import { getStore } from '@netlify/blobs';
 import { development } from './config.ts';
 import { assert } from './errors.ts';
 export interface MediaStorage {
-  kind: 'local' | 'gcs';
+  kind: 'local' | 'gcs' | 'netlify';
   put(key: string, bytes: Buffer, contentType?: string): Promise<void>;
   get(key: string): Promise<Buffer>;
 }
@@ -37,6 +38,7 @@ export function localMediaStorage(root = '.local/media'): MediaStorage {
   };
 }
 export function configuredStorage(): MediaStorage | undefined {
+  if (process.env.MEDIA_STORAGE === 'netlify') return netlifyMediaStorage();
   if (process.env.GCS_MEDIA_BUCKET) {
     const bucket = new Storage().bucket(process.env.GCS_MEDIA_BUCKET);
     return {
@@ -68,4 +70,32 @@ export function configuredStorage(): MediaStorage | undefined {
     };
   }
   return development ? localMediaStorage() : undefined;
+}
+
+export function netlifyMediaStorage(): MediaStorage {
+  // Resolve the request's credentials lazily, after connectLambda has run.
+  const store = () => getStore({ name: 'academy-private-media', consistency: 'strong' });
+  const get = async (key: string) => {
+    const bytes = await store().get(key, { type: 'arrayBuffer' });
+    assert(bytes, 'Document not found', 404);
+    return Buffer.from(bytes);
+  };
+  return {
+    kind: 'netlify',
+    get,
+    async put(key, bytes, contentType = 'application/pdf') {
+      const result = await store().set(key, new Uint8Array(bytes).buffer, {
+        onlyIfNew: true,
+        metadata: { contentType },
+      });
+      if (!result.modified)
+        assert(
+          createHash('sha256')
+            .update(await get(key))
+            .digest('hex') === createHash('sha256').update(bytes).digest('hex'),
+          'Stored document conflicts with this upload',
+          409,
+        );
+    },
+  };
 }

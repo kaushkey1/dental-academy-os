@@ -73,10 +73,10 @@ export async function beginMedia(
     .parse(input);
   assert(
     b.kind !== 'pdf' ||
-      (b.size <= 20 * 1024 ** 2 &&
+      (b.size <= (process.env.NETLIFY ? 4 : 20) * 1024 ** 2 &&
         b.mimeType === 'application/pdf' &&
         b.name.toLowerCase().endsWith('.pdf')),
-    'Choose a PDF of up to 20 MB',
+    `Choose a PDF of up to ${process.env.NETLIFY ? 4 : 20} MB`,
   );
   assert(b.kind !== 'video' || b.mimeType.startsWith('video/'), 'Choose a video file');
   assert(
