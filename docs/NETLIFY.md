@@ -7,6 +7,9 @@ October 31 release contract remains open in RELEASE.md.
 - Source: https://github.com/kaushkey1/dental-academy-os (private, main).
 - Site: https://dental-academy-os-kaushkey.netlify.app
 - Project: https://app.netlify.com/projects/dental-academy-os-kaushkey
+- Public sharing approved October 14: the production URL opens without a Netlify login.
+  Non-production contexts retain Netlify team protection. Role workspaces still require
+  the host-shared demo access code.
 - Build: npm run build; static files in dist; Express runs in the api function.
 - PostgreSQL provides transactions, forced tenant RLS and persistent data. Use a
   dedicated LOGIN role granted academy_app, without superuser/BYPASSRLS/CREATEROLE.

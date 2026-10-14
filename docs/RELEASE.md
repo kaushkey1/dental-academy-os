@@ -684,8 +684,10 @@ visible; the Icode full course, saved progress and nine-page private workbook re
 successfully. Proof screenshots are in ../../work/netlify/. Deployment 6ace87e5a731d00a4bf17450
 is ready on commit 9dd42c5, automatically triggered by the GitHub push.
 
-Netlify team protection is still enabled. Public sharing requires the user's explicit
-approval after automatic approval review rejected the access change. The demo is not the finished production
+The user explicitly approved public sharing on October 14. The production URL is public;
+Netlify team protection applies to non-production contexts. Anonymous checks return 200
+for the app and bootstrap, and 401 for private account data. All role workspaces still
+require the shared demo access code. The demo is not the finished production
 release; original release gates remain open. New document/proof uploads are limited to
 4 MB on Netlify, with matching UI validation. The existing HLS bundle warning remains.
 See NETLIFY.md for the deployment/runbook.
