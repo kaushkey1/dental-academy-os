@@ -2016,6 +2016,26 @@ td .button {
 .rich-editor {
   min-width: 0;
 }
+.catalog-details-editor {
+  min-width: 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 18px 0;
+  margin: 10px 0 22px;
+}
+.catalog-details-preview {
+  max-height: 360px;
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  margin-top: 14px;
+}
+.catalog-page-content {
+  margin: 28px 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .rich-editor .field-label {
   font-weight: 600;
   margin-bottom: 7px;

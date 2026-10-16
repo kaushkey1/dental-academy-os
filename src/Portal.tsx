@@ -1,4 +1,5 @@
 import { PolicyTerms } from './CancellationPolicy';
+import { RichTextContent } from './RichTextContent';
 import { BuyerBillingFields, buyerBillingFromForm } from './Billing';
 import { PaymentDetails, PaymentModal } from './PaymentDetails';
 import { LearnerPostTest } from './LearnerPostTest';
@@ -228,7 +229,13 @@ export function Checkout({
               {o.credits} {o.credit_type} credits
             </span>
           </div>
-          <p className="checkout-description">{o.description}</p>
+          <section className="catalog-page-content" aria-label="About this offering">
+            <RichTextContent
+              format={o.details?.format}
+              document={o.details?.document}
+              plain={o.description || ''}
+            />
+          </section>
           {o.objectives?.length > 0 && (
             <section className="learning-objectives">
               <h2>What you’ll learn</h2>

@@ -1,4 +1,5 @@
 import { CoursePublication } from './CoursePublication';
+import { CatalogDetailsEditor, catalogDetailsFromForm } from './CatalogDetailsEditor';
 import { CancellationQueue } from './Cancellations';
 import { CancellationPolicySettings } from './CancellationPolicy';
 import { RefundQueue } from './Refunds';
@@ -1262,6 +1263,7 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
                 title: d.get('title'),
                 specialty: d.get('specialty'),
                 description: d.get('description'),
+                catalogDetails: catalogDetailsFromForm(d),
                 credits: Number(d.get('credits')),
                 creditType: d.get('creditType'),
                 faculty: d.get('faculty'),
@@ -1280,9 +1282,10 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
                 <input name="faculty" />
               </Field>
             </div>
-            <Field label="Description">
+            <Field label="Short description" hint="Used on catalog listing cards.">
               <textarea name="description" rows={3} required />
             </Field>
+            <CatalogDetailsEditor />
             <div className="form-grid">
               <Field label="Credit hours">
                 <input
@@ -1317,6 +1320,7 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
             onSubmit={async (d) => {
               await api('/offerings', 'POST', {
                 programId: d.get('programId'),
+                catalogDetails: catalogDetailsFromForm(d),
                 kind: modal,
                 title: d.get('title'),
                 startsAt: d.get('startsAt') || undefined,
@@ -1353,6 +1357,11 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
             <Field label="Offering title">
               <input name="title" required />
             </Field>
+            <CatalogDetailsEditor
+              offering
+              inherited={data.programs.find((p: Row) => p.id === selectedProgram)?.catalog_details}
+              summary={data.programs.find((p: Row) => p.id === selectedProgram)?.description}
+            />
             {modal === 'workshop' ? (
               <>
                 <div className="form-grid">

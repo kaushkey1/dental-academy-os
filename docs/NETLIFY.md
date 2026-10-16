@@ -63,3 +63,16 @@ real staff provisioning, approved catalog/legal content, provider setup and rele
 Review the Free plan's credit/storage limits before demos; no paid upgrade is configured.
 Schema changes require an explicit migration using an operator connection before code that
 depends on them is deployed. Builds never run migrations or seed data automatically.
+
+
+## Pending catalog details deployment — October 17
+
+The Netlify dashboard reports the team credit limit exceeded and all projects/deploys
+paused. The account owner must restore hosting access before this update can be deployed.
+The catalog details feature requires migration 027, which adds optional JSONB columns to
+programs and offerings. Apply it using a temporary, approved migration connection before
+merging the feature branch into main; never add the migration credential to runtime.
+Disable temporary database owner access after migration, then merge/deploy and verify
+public detail responses and editor persistence for both academies. Existing plain
+descriptions require no data conversion and the previous app remains compatible with the
+additive migration. The review samples created locally are not copied to the hosted demo.

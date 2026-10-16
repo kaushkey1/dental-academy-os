@@ -5,6 +5,7 @@ import { type Identity } from './auth.ts';
 import { assert, requireValue } from './errors.ts';
 import { event } from './domain.ts';
 import { catalogTime } from './catalog-time.ts';
+import { catalogDetailsInput } from './catalog-details.ts';
 const label = z.string().trim().min(1).max(500),
   uuid = z.string().uuid();
 const version = z.number().int().positive(),
@@ -30,6 +31,7 @@ export async function saveProgram(tx: Queryable, i: Identity, input: unknown, id
       title: label,
       specialty: label,
       description: z.string().trim().min(1).max(10000),
+      catalogDetails: catalogDetailsInput,
       objectives: z.array(label).max(30).default([]),
       credits,
       creditType: label,
@@ -51,7 +53,7 @@ export async function saveProgram(tx: Queryable, i: Identity, input: unknown, id
   const row = id
     ? await one(
         tx,
-        `UPDATE programs SET title=$1,specialty=$2,description=$3,objectives=$4,credits=$5,credit_type=$6,faculty=$7,revision=revision+1 WHERE id=$8 RETURNING *`,
+        `UPDATE programs SET title=$1,specialty=$2,description=$3,objectives=$4,credits=$5,credit_type=$6,faculty=$7,catalog_details=$9,revision=revision+1 WHERE id=$8 RETURNING *`,
         [
           b.title,
           b.specialty,
@@ -61,11 +63,16 @@ export async function saveProgram(tx: Queryable, i: Identity, input: unknown, id
           b.creditType,
           JSON.stringify(faculty),
           id,
+          (b.catalogDetails === undefined ? previous!.catalog_details : b.catalogDetails)
+            ? JSON.stringify(
+                b.catalogDetails === undefined ? previous!.catalog_details : b.catalogDetails,
+              )
+            : null,
         ],
       )
     : await one(
         tx,
-        `INSERT INTO programs(tenant_id,id,title,slug,specialty,description,objectives,credits,credit_type,faculty) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`,
+        `INSERT INTO programs(tenant_id,id,title,slug,specialty,description,objectives,credits,credit_type,faculty,catalog_details) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *`,
         [
           i.tenant.id,
           programId,
@@ -82,6 +89,7 @@ export async function saveProgram(tx: Queryable, i: Identity, input: unknown, id
           b.credits,
           b.creditType,
           JSON.stringify(faculty),
+          b.catalogDetails ? JSON.stringify(b.catalogDetails) : null,
         ],
       );
   await event(tx, i.tenant.id, previous ? 'program.updated' : 'program.created', {
@@ -145,6 +153,7 @@ export async function saveOffering(tx: Queryable, i: Identity, id: string, input
       revision: version,
       title: label,
       venue: z.string().trim().max(300),
+      catalogDetails: catalogDetailsInput,
       capacity: z.number().int().min(1).max(10000).nullable(),
       credits,
       creditType: label,
@@ -241,7 +250,7 @@ export async function saveOffering(tx: Queryable, i: Identity, id: string, input
     assert(sessions[0].startsAt > new Date(), 'Reschedule to a future date');
   const row = await one(
     tx,
-    `UPDATE offerings SET title=$1,venue=$2,capacity=$3,credits=$4,credit_type=$5,access_days=$6,require_feedback=$7,starts_at=$8,ends_at=$9,revision=revision+1 WHERE id=$10 RETURNING *`,
+    `UPDATE offerings SET title=$1,venue=$2,capacity=$3,credits=$4,credit_type=$5,access_days=$6,require_feedback=$7,starts_at=$8,ends_at=$9,catalog_details=$11,revision=revision+1 WHERE id=$10 RETURNING *`,
     [
       b.title,
       b.venue,
@@ -253,6 +262,9 @@ export async function saveOffering(tx: Queryable, i: Identity, id: string, input
       sessions[0]?.startsAt || null,
       sessions.at(-1)?.endsAt || null,
       id,
+      (b.catalogDetails === undefined ? o.catalog_details : b.catalogDetails)
+        ? JSON.stringify(b.catalogDetails === undefined ? o.catalog_details : b.catalogDetails)
+        : null,
     ],
   );
   for (const prior of old)

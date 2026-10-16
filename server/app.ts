@@ -1,3 +1,4 @@
+import { catalogDetails, catalogDetailsInput } from './catalog-details.ts';
 import {
   cancellationSummary,
   requestCancellation,
@@ -134,14 +135,39 @@ const mobile = z
 const paramsSchema = z
   .record(z.string().max(100), z.string().max(2000))
   .refine((v) => Object.keys(v).length <= 40, 'Too many URL parameters');
-async function offerings(tx: Queryable, publicOnly = false, facultyId?: string) {
+async function offerings(
+  tx: Queryable,
+  publicOnly = false,
+  facultyId?: string,
+  lookup?: { reference: string; kind: string },
+) {
+  const conditions: string[] = [],
+    values: string[] = [];
+  if (publicOnly)
+    conditions.push(
+      "p.published AND p.archived_at IS NULL AND o.archived_at IS NULL AND o.status IN ('open','closed','completed')",
+    );
+  if (facultyId) {
+    values.push(facultyId);
+    conditions.push(
+      `EXISTS (SELECT 1 FROM offering_faculty f WHERE f.offering_id=o.id AND f.tenant_id=o.tenant_id AND f.staff_id=$${values.length})`,
+    );
+  }
+  if (lookup) {
+    values.push(lookup.reference, lookup.kind);
+    conditions.push(
+      `(o.id::text=$${values.length - 1} OR o.slug=$${values.length - 1}) AND o.kind=$${values.length}`,
+    );
+  }
   const rows = (
     await tx.query(
-      `SELECT o.*,p.specialty,p.description,p.objectives,p.faculty FROM offerings o JOIN programs p ON p.tenant_id=o.tenant_id AND p.id=o.program_id ${publicOnly ? "WHERE p.published AND p.archived_at IS NULL AND o.archived_at IS NULL AND o.status IN ('open','closed','completed')" : facultyId ? 'WHERE EXISTS (SELECT 1 FROM offering_faculty f WHERE f.offering_id=o.id AND f.tenant_id=o.tenant_id AND f.staff_id=$1)' : ''} ORDER BY o.starts_at NULLS LAST LIMIT 200`,
-      facultyId ? [facultyId] : [],
+      `SELECT o.*,p.specialty,p.description,p.objectives,p.faculty,p.catalog_details AS program_catalog_details FROM offerings o JOIN programs p ON p.tenant_id=o.tenant_id AND p.id=o.program_id ${conditions.length ? 'WHERE ' + conditions.join(' AND ') : ''} ORDER BY o.starts_at NULLS LAST LIMIT 200`,
+      values,
     )
   ).rows;
   for (const o of rows) {
+    o.details = catalogDetails(o.catalog_details, o.program_catalog_details, o.description);
+    delete o.program_catalog_details;
     o.seats_left = await remainingSeats(tx, o);
     o.tickets = facultyId
       ? []
@@ -489,6 +515,9 @@ export function createApp(
         offering = await requireOfferingAccess(tx, i, id);
       return {
         offering,
+        program: await one(tx, 'SELECT description,catalog_details FROM programs WHERE id=$1', [
+          offering.program_id,
+        ]),
         sessions: (
           await tx.query('SELECT * FROM sessions WHERE offering_id=$1 ORDER BY starts_at', [id])
         ).rows,
@@ -539,6 +568,7 @@ export function createApp(
           kind: z.enum(['workshop', 'course']),
           title: text,
           startsAt: z.string().optional(),
+          catalogDetails: catalogDetailsInput,
           days: z.number().int().min(1).max(20).default(2),
           venue: z.string().max(300).default(''),
           capacity: z.number().int().min(1).max(10000).optional(),
@@ -578,7 +608,7 @@ export function createApp(
           '-' +
           id.slice(0, 6);
       await tx.query(
-        'INSERT INTO offerings(tenant_id,id,program_id,kind,title,slug,starts_at,ends_at,venue,capacity,credits,access_days,require_feedback) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)',
+        'INSERT INTO offerings(tenant_id,id,program_id,kind,title,slug,starts_at,ends_at,venue,capacity,credits,access_days,require_feedback,catalog_details) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)',
         [
           i.tenant.id,
           id,
@@ -593,6 +623,7 @@ export function createApp(
           b.credits,
           b.accessDays || null,
           b.kind === 'workshop',
+          b.catalogDetails ? JSON.stringify(b.catalogDetails) : null,
         ],
       );
       await tx.query(
