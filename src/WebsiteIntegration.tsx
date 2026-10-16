@@ -48,6 +48,7 @@ export function WebsiteIntegration({ academySlug }: { academySlug: string }) {
   const [operation, setOperation] = useState<WebsiteOperation>('runs');
   const [language, setLanguage] = useState<'javascript' | 'curl'>('javascript');
   const [offeringId, setOfferingId] = useState('');
+  const [detailReference, setDetailReference] = useState('');
   const [rotate, setRotate] = useState(false);
   const [testResult, setTestResult] = useState<{ count: number; response: unknown } | null>(null);
   const apply = (value: Integration) => {
@@ -99,7 +100,15 @@ export function WebsiteIntegration({ academySlug }: { academySlug: string }) {
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
-  const snippet = info ? websiteSnippet(info, operation, language, offeringId) : '';
+  const isDetail = operation.includes('/:reference');
+  const detailItems = operation.startsWith('programs/')
+    ? info?.programs || []
+    : (info?.offerings || []).filter(
+        (o) => o.kind === (operation.startsWith('courses/') ? 'course' : 'workshop'),
+      );
+  const snippet = info
+    ? websiteSnippet(info, operation, language, isDetail ? detailReference : offeringId)
+    : '';
   return (
     <section className="panel website-integration" aria-labelledby="website-title">
       <div className="website-heading">
@@ -282,7 +291,10 @@ export function WebsiteIntegration({ academySlug }: { academySlug: string }) {
               <Field label="What do you want to connect?">
                 <select
                   value={operation}
-                  onChange={(e) => setOperation(e.target.value as WebsiteOperation)}
+                  onChange={(e) => {
+                    setOperation(e.target.value as WebsiteOperation);
+                    setDetailReference('');
+                  }}
                 >
                   {websiteEndpoints.map((endpoint) => (
                     <option key={endpoint.path} value={endpoint.path}>
@@ -291,6 +303,21 @@ export function WebsiteIntegration({ academySlug }: { academySlug: string }) {
                   ))}
                 </select>
               </Field>
+              {isDetail && (
+                <Field label="Catalog item">
+                  <select
+                    value={detailReference || detailItems[0]?.id || ''}
+                    onChange={(e) => setDetailReference(e.target.value)}
+                  >
+                    {!detailItems.length && <option value="">No published items</option>}
+                    {detailItems.map((item) => (
+                      <option value={item.id} key={item.id}>
+                        {item.title}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+              )}
               {(operation === 'checkout-sessions' || operation === 'inquiries') && (
                 <Field label="Workshop or course">
                   <select value={offeringId} onChange={(e) => setOfferingId(e.target.value)}>
@@ -315,6 +342,12 @@ export function WebsiteIntegration({ academySlug }: { academySlug: string }) {
                 </button>
               </div>
             </div>
+            {isDetail && (
+              <p className="website-hint">
+                Fetch a single page by ID or slug. Use the returned formatted HTML or rich-text
+                document in your website template. Listings also include a details URL.
+              </p>
+            )}
             {operation === 'checkout-sessions' && !offeringId && (
               <p className="notice">
                 Publish a workshop or course first, then select it to generate a working checkout
