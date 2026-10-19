@@ -49,6 +49,7 @@ export function WebsiteIntegration({ academySlug }: { academySlug: string }) {
   const [language, setLanguage] = useState<'javascript' | 'curl'>('javascript');
   const [offeringId, setOfferingId] = useState('');
   const [detailReference, setDetailReference] = useState('');
+  const [previewLessonId, setPreviewLessonId] = useState('');
   const [rotate, setRotate] = useState(false);
   const [testResult, setTestResult] = useState<{ count: number; response: unknown } | null>(null);
   const apply = (value: Integration) => {
@@ -107,7 +108,13 @@ export function WebsiteIntegration({ academySlug }: { academySlug: string }) {
         (o) => o.kind === (operation.startsWith('courses/') ? 'course' : 'workshop'),
       );
   const snippet = info
-    ? websiteSnippet(info, operation, language, isDetail ? detailReference : offeringId)
+    ? websiteSnippet(
+        info,
+        operation,
+        language,
+        isDetail ? detailReference : offeringId,
+        previewLessonId,
+      )
     : '';
   return (
     <section className="panel website-integration" aria-labelledby="website-title">
@@ -288,6 +295,18 @@ export function WebsiteIntegration({ academySlug }: { academySlug: string }) {
               </Button>
             </div>
             <div className="website-example-controls">
+              {operation.includes(':lessonId') && (
+                <Field
+                  label="Preview lesson ID"
+                  hint="Copy a lesson ID marked freePreview from the course curriculum response."
+                >
+                  <input
+                    value={previewLessonId}
+                    onChange={(e) => setPreviewLessonId(e.target.value)}
+                    placeholder="Lesson ID from curriculum"
+                  />
+                </Field>
+              )}
               <Field label="What do you want to connect?">
                 <select
                   value={operation}

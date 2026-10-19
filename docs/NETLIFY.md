@@ -64,7 +64,6 @@ Review the Free plan's credit/storage limits before demos; no paid upgrade is co
 Schema changes require an explicit migration using an operator connection before code that
 depends on them is deployed. Builds never run migrations or seed data automatically.
 
-
 ## Pending catalog details deployment — October 17
 
 The Netlify dashboard reports the team credit limit exceeded and all projects/deploys
@@ -76,3 +75,17 @@ Disable temporary database owner access after migration, then merge/deploy and v
 public detail responses and editor persistence for both academies. Existing plain
 descriptions require no data conversion and the previous app remains compatible with the
 additive migration. The review samples created locally are not copied to the hosted demo.
+
+### October 19 follow-up: public course previews
+
+This branch also requires migration **028** before deployment. It adds `lessons.free_preview`
+(default false) and `offerings.preview_revision`; it does not publish any existing lesson. Apply
+027 and 028 with the migration owner credentials before switching the server version. Do not
+use runtime/read-only credentials for schema changes. Deployment remains pending the hosting
+credit/access block noted above; this change has only been run locally.
+
+After deployment, configure allowed website origins, verify the new curriculum API, then select
+preview lessons in the course builder. Mux signing and playback-domain restrictions must include
+the public website before testing actual video playback. PDF preview bytes use the existing
+private media storage adapter. The simplified finance interface does not remove stored tax,
+invoice or refund records or change server accounting.

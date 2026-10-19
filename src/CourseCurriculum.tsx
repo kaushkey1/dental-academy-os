@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ArrowUp, ArrowDown, Plus } from 'lucide-react';
 import { api, Button, Empty, Form, Modal, type Row } from './shared';
 import { LessonDraftEditor } from './LessonDraftEditor';
+import { CoursePreviewSettings } from './CoursePreviewSettings';
 
 export function CourseCurriculum({
   courseId,
@@ -75,6 +76,15 @@ export function CourseCurriculum({
           </Button>
         )}
       </div>
+      {access.editCatalog && data && data.lessons.length > 0 && (
+        <CoursePreviewSettings
+          key={`${courseId}-${data.revision}-${data.previewRevision}`}
+          courseId={courseId}
+          data={data}
+          reload={reload}
+          notify={notify}
+        />
+      )}
       {error && (
         <p className="error" role="alert">
           {error}{' '}
@@ -138,6 +148,7 @@ export function CourseCurriculum({
             <strong>{lesson.title}</strong>
             <span>
               {lesson.kind} · {lesson.required ? 'Required' : 'Optional'}
+              {lesson.free_preview ? ' · Free public preview' : ''}
             </span>
           </div>
           <div className="lesson-actions">

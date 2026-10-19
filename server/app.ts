@@ -1,4 +1,5 @@
 import { catalogDetails, catalogDetailsInput } from './catalog-details.ts';
+import { savePreviewAccess } from './course-previews.ts';
 import {
   cancellationSummary,
   requestCancellation,
@@ -298,7 +299,7 @@ export function createApp(
   );
   app.use(express.json({ limit: '100kb' }));
   // Public website integrations have their own tenant key and origin checks.
-  app.use('/api/v1/:slug', websiteApi(db, offerings));
+  app.use('/api/v1/:slug', websiteApi(db, offerings, media));
   app.use('/api', (req, res, next) => {
     res.setHeader('Cache-Control', 'no-store');
     if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
@@ -998,6 +999,7 @@ export function createApp(
             : quiz,
         capabilities: access,
         revision: offering.curriculum_revision,
+        previewRevision: offering.preview_revision,
         drafts: access.editCatalog ? await listLessonDrafts(tx, id) : [],
         readiness: access.editCatalog ? await courseReadiness(tx, id) : null,
         archived: access.editCatalog
@@ -1010,6 +1012,10 @@ export function createApp(
           : [],
       };
     }),
+  );
+  app.put(
+    '/api/courses/:id/preview-access',
+    staff('catalog', (tx, i, req) => savePreviewAccess(tx, i, uuid.parse(req.params.id), req.body)),
   );
   app.get(
     '/api/courses/:id/lessons/:lessonId/video',

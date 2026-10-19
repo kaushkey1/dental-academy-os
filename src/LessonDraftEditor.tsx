@@ -126,7 +126,11 @@ export function LessonDraftEditor({
   return (
     <Modal
       title={lessonId ? 'Edit lesson draft' : 'New lesson draft'}
-      subtitle="Drafts are private to academy editors. Learners see changes only after you publish."
+      subtitle={
+        lesson?.free_preview
+          ? 'This lesson has a free public preview. Publishing updates its public content too. Saved drafts stay private.'
+          : 'Drafts are private to academy editors. Learners see changes only after you publish.'
+      }
       onClose={() => {
         void close();
       }}

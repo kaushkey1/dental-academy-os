@@ -310,17 +310,20 @@ export function BillingDocuments({
   data,
   tenant,
   staff,
+  simple = false,
   onUpdated,
 }: {
   data: Row;
   tenant: Row;
   staff: boolean;
+  simple?: boolean;
   onUpdated: () => Promise<unknown>;
 }) {
   const [preview, setPreview] = useState<string | null>(null),
     [notice, setNotice] = useState('');
-  const docs = data.documents || [],
+  const docs = (data.documents || []).filter((d: Row) => !simple || d.status === 'issued'),
     pending = docs.filter((d: Row) => d.status === 'pending');
+  if (simple && !docs.length) return null;
   return (
     <section className="billing-documents">
       <h3>Invoices &amp; receipts</h3>
@@ -377,7 +380,7 @@ export function BillingDocuments({
           </div>
         </article>
       ))}
-      {data.canManageBilling && pending.length > 0 && (
+      {!simple && data.canManageBilling && pending.length > 0 && (
         <>
           <Form
             label="Issue pending documents"

@@ -3669,3 +3669,45 @@ td .button {
     flex-direction: column;
   }
 }
+.course-preview-settings {
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid var(--line, #e2e8f0);
+  border-radius: 14px;
+  background: #f8fbff;
+}
+.course-preview-settings summary {
+  cursor: pointer;
+  font-weight: 650;
+}
+.course-preview-settings summary span {
+  margin-left: 12px;
+  font-size: 12px;
+  color: #526277;
+}
+.course-preview-settings > p {
+  font-size: 14px;
+  max-width: 80ch;
+  margin: 14px 0;
+}
+.preview-module {
+  border: 1px solid #dce4ef;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 18px 0;
+  background: white;
+}
+.preview-module legend {
+  font-weight: 650;
+  padding: 0 6px;
+}
+.preview-module > .checkbox {
+  margin: 12px 0;
+  align-items: flex-start;
+}
+.preview-module small {
+  display: block;
+  color: #5f6d80;
+  font-size: 12px;
+  margin-top: 4px;
+}

@@ -473,9 +473,7 @@ export function Checkout({
                   )}
                   <h3>Billing details</h3>
                   <BuyerBillingFields tenant={t} value={{ name: profile?.name || '' }} />
-                  <p className="muted">
-                    Your final total and tax lines are calculated on the server before payment.
-                  </p>
+                  <p className="muted">Review your final total before paying.</p>
                 </Form>
               )}
               {error && (

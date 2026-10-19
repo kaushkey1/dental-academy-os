@@ -8,6 +8,9 @@ import { type Database, type Queryable, type Row, one, tenantTx } from './db.ts'
 import { AppError, assert, requireValue } from './errors.ts';
 import { event } from './domain.ts';
 import { catalogDetails } from './catalog-details.ts';
+import { publicCurriculum, publicPreviewLesson, previewLessonData } from './course-previews.ts';
+import { documentBytes, mediaServices, type MediaServices } from './media.ts';
+import { signedPlayback } from './providers.ts';
 
 const params = z
   .record(z.string().max(100), z.string().max(2000))
@@ -164,6 +167,7 @@ export function websiteApi(
     facultyId?: string,
     lookup?: { reference: string; kind: string },
   ) => Promise<Row[]>,
+  media: MediaServices = mediaServices(),
 ) {
   const router = Router({ mergeParams: true });
   router.use(async (req, res, next) => {
@@ -240,6 +244,52 @@ export function websiteApi(
     ).toString();
   const publicOffering = ({ tenant_id: _tenant, catalog_details: _stored, ...offering }: Row) =>
     offering;
+  router.use((_req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store');
+    next();
+  });
+  router.get('/courses/:reference/curriculum', async (req, res) => {
+    const data = await tenantTx(db, res.locals.websiteTenant.id, 'system', (tx) =>
+      publicCurriculum(tx, String(req.params.reference)),
+    );
+    res.json({ version: 'v1', data });
+  });
+  router.get('/courses/:reference/lessons/:lessonId/preview', async (req, res) => {
+    const data = await tenantTx(db, res.locals.websiteTenant.id, 'system', async (tx) => {
+      const { lesson } = await publicPreviewLesson(
+        tx,
+        String(req.params.reference),
+        z.string().uuid().parse(req.params.lessonId),
+      );
+      return {
+        ...previewLessonData(lesson),
+        ...(lesson.kind === 'video'
+          ? {
+              playback: {
+                url: await signedPlayback(lesson.asset_id, lesson.duration_seconds, 900),
+                expiresAt: new Date(Date.now() + 900000).toISOString(),
+              },
+            }
+          : {}),
+      };
+    });
+    res.json({ version: 'v1', data });
+  });
+  router.get('/courses/:reference/lessons/:lessonId/document', async (req, res) => {
+    const bytes = await tenantTx(db, res.locals.websiteTenant.id, 'system', async (tx) => {
+      const { course, lesson } = await publicPreviewLesson(
+        tx,
+        String(req.params.reference),
+        z.string().uuid().parse(req.params.lessonId),
+      );
+      assert(lesson.kind === 'pdf', 'Document preview not found', 404);
+      return (await documentBytes(tx, course.id, lesson.id, media)).bytes;
+    });
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename="course-preview.pdf"');
+    res.setHeader('Content-Security-Policy', "sandbox; default-src 'none'");
+    res.send(bytes);
+  });
   router.get('/:resource/:reference', async (req, res) => {
     const tenant = res.locals.websiteTenant;
     const resource = String(req.params.resource);

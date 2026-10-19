@@ -1,4 +1,5 @@
 import { CoursePublication } from './CoursePublication';
+import { advancedFinanceEnabled } from './product-features';
 import { CatalogDetailsEditor, catalogDetailsFromForm } from './CatalogDetailsEditor';
 import { CancellationQueue } from './Cancellations';
 import { CancellationPolicySettings } from './CancellationPolicy';
@@ -505,7 +506,7 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
               <div className={access.viewRevenue ? 'metrics' : 'metrics three'}>
                 {access.viewRevenue && (
                   <Metric
-                    label="Applied payments"
+                    label="Paid"
                     value={money(data.summary.collected, t, true)}
                     foot="Money allocated to bookings"
                     icon={<CreditCard size={17} />}
@@ -1073,36 +1074,46 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
               {access.viewRevenue && (
                 <div className="metrics">
                   <Metric
-                    label="Applied payments"
+                    label="Paid"
                     value={money(data.summary.collected, t, true)}
                     foot="Money allocated to bookings"
                   />
-                  <Metric
-                    label="Unapplied receipts"
-                    value={money(data.summary.unallocated, t, true)}
-                    foot="Received money awaiting resolution"
-                    amber
-                  />
+                  {data.summary.unallocated > 0 && (
+                    <Metric
+                      label="Payment needs review"
+                      value={money(data.summary.unallocated, t, true)}
+                      foot="Received money awaiting resolution"
+                      amber
+                    />
+                  )}
                   <Metric
                     label="Outstanding"
                     value={money(data.summary.outstanding, t, true)}
                     foot="Remaining on deposit orders"
                     amber
                   />
-                  <Metric
-                    label="Refunded"
-                    value={money(data.summary.refunded, t, true)}
-                    foot="Confirmed refunds, including excess returns"
-                  />
+                  {data.summary.refunded > 0 && (
+                    <Metric
+                      label="Refunded"
+                      value={money(data.summary.refunded, t, true)}
+                      foot="Confirmed returns"
+                    />
+                  )}
                 </div>
               )}
               {access.managePayments && (
                 <>
-                  <ReconciliationQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
-                  <CancellationQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
-                  <RefundQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
+                  {advancedFinanceEnabled && (
+                    <>
+                      <ReconciliationQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
+                      <CancellationQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
+                      <RefundQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
+                    </>
+                  )}
                   <OfflinePaymentQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
-                  <BillingQueue onOpen={setPaymentOrder} revision={data} />
+                  {advancedFinanceEnabled && (
+                    <BillingQueue onOpen={setPaymentOrder} revision={data} />
+                  )}
                 </>
               )}
               <div className="panel table-wrap">
@@ -2346,8 +2357,12 @@ function Settings({ tenant, settings }: { tenant: Row; settings: Row }) {
           <TeamSettings />
           <WebsiteIntegration academySlug={tenant.slug} />
           <PaymentPolicy />
-          <CancellationPolicySettings />
-          <BillingSettings tenant={tenant} />
+          {advancedFinanceEnabled && (
+            <>
+              <CancellationPolicySettings />
+              <BillingSettings tenant={tenant} />
+            </>
+          )}
         </>
       )}
       <div className="settings-grid">

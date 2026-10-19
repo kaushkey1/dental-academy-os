@@ -230,7 +230,7 @@ export async function archiveLesson(
   if (!b.archived && previous.media_id) await readyMedia(tx, id, previous.media_id, previous.kind);
   const lesson = await one(
     tx,
-    `UPDATE lessons SET archived_at=CASE WHEN $1 THEN now() ELSE NULL END,revision=revision+1,
+    `UPDATE lessons SET archived_at=CASE WHEN $1 THEN now() ELSE NULL END,revision=revision+1,free_preview=CASE WHEN $1 THEN false ELSE free_preview END,
       position=CASE WHEN $1 THEN position ELSE (SELECT coalesce(max(l.position),-1)+1 FROM lessons l WHERE l.offering_id=$3 AND l.archived_at IS NULL) END
       WHERE id=$2 RETURNING *`,
     [b.archived, lessonId, id],
