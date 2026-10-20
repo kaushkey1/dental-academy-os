@@ -1,6 +1,6 @@
 # October 31 release contract
 
-Updated: October 19, 2026. **Status: implementation in progress; not ready for live use.**
+Updated: October 20, 2026. **Status: implementation in progress; not ready for live use.**
 
 User decisions: BOTH academies, INCLUDING complete online courses. Target is October 31,
 2026 (Asia/Kolkata planning date). The user subsequently selected GitHub + Netlify hosting, with a separate copy of local data for demonstrations; preserve GCP compatibility. A working prototype
@@ -782,3 +782,40 @@ Deployment remains pending. Netlify team credits were exhausted on the last host
 (October 17), and the production migration channel was read-only. Restore hosting and approve
 owner migration access before applying **027 and 028** and deploying this branch. No production
 settings, financial records or hosted course content were changed for this slice.
+
+## October 20: presentation course installed locally
+
+The user requested a useful, polished course to present. Added an opt-in presentation edition,
+**Clinical Photography: From First Frame to Portfolio**, in both local academies. Six modules
+contain twelve required rich-text lessons, original worked decisions, practice tasks, formative
+checks and a five-view model portfolio challenge. An optional, illustrated sixteen-page PDF
+combines camera/geometry/sequence guides, worksheets, six practice labs and a review rubric.
+A sixteen-question scenario assessment uses an 80% threshold and three attempts.
+
+The first two lessons, complete workbook and kit/setup lesson are free previews. Other lesson
+bodies stay locked on the website. A rich catalog page explains the outcome, format, prerequisites,
+access and demonstration status. Display price is INR 2,499 with 180-day access and no approved
+credits. Both courses have assigned demo faculty and a fictional complimentary learner. The
+local Icode website and full learner player are open for presentation. No patient images, actual
+learner credentials, clinical competence grading, accreditation or provider success is implied.
+
+The local-only installer uses the existing tenant-authenticated catalog, authoring, media, quiz,
+preview and access APIs. It is separate from seed/migrations/build/startup and preserves existing
+review courses. Reopening uses existing identities and keeps editorial choices; explicit refresh
+flags are documented. PDF bytes are content-addressed and verified by the normal media pipeline.
+No core payment, tenant, completion or provider behavior changed in this slice.
+
+Validation: build and all 233 tests passed. Assigned faculty/learner HTTP checks in each academy
+confirmed the curriculum, assessment, answer-key privacy, role boundaries and pending completion
+requirements. Icode website HTTP checks confirmed six modules, four free previews, nine locked
+lessons, and a sixteen-page PDF whose hash matches the packaged asset. The separate website is
+configured only for Icode. Browser review covered final copy, free workbook, lesson player,
+assessment display and PDF navigation. All workbook pages were rendered and visually inspected.
+No fabricated lesson completion, test score, certificate, live payment or production installation
+was performed. The admin OTP account hit the persistent setup rate limit during repeated
+installation attempts; it was left intact and final reads used the assigned demo faculty account.
+
+Source and presentation instructions: `content/photography-showcase/README.md`. Hosted deployment
+still awaits the previously recorded Netlify access/migration gates. This course is ready for
+product demonstrations; academy content/faculty/local-policy approval remains required for
+clinical delivery.
