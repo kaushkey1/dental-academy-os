@@ -1,4 +1,6 @@
 import { CoursePublication } from './CoursePublication';
+import { advancedFinanceEnabled } from './product-features';
+import { CatalogDetailsEditor, catalogDetailsFromForm } from './CatalogDetailsEditor';
 import { CancellationQueue } from './Cancellations';
 import { CancellationPolicySettings } from './CancellationPolicy';
 import { RefundQueue } from './Refunds';
@@ -504,7 +506,7 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
               <div className={access.viewRevenue ? 'metrics' : 'metrics three'}>
                 {access.viewRevenue && (
                   <Metric
-                    label="Applied payments"
+                    label="Paid"
                     value={money(data.summary.collected, t, true)}
                     foot="Money allocated to bookings"
                     icon={<CreditCard size={17} />}
@@ -1072,36 +1074,46 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
               {access.viewRevenue && (
                 <div className="metrics">
                   <Metric
-                    label="Applied payments"
+                    label="Paid"
                     value={money(data.summary.collected, t, true)}
                     foot="Money allocated to bookings"
                   />
-                  <Metric
-                    label="Unapplied receipts"
-                    value={money(data.summary.unallocated, t, true)}
-                    foot="Received money awaiting resolution"
-                    amber
-                  />
+                  {data.summary.unallocated > 0 && (
+                    <Metric
+                      label="Payment needs review"
+                      value={money(data.summary.unallocated, t, true)}
+                      foot="Received money awaiting resolution"
+                      amber
+                    />
+                  )}
                   <Metric
                     label="Outstanding"
                     value={money(data.summary.outstanding, t, true)}
                     foot="Remaining on deposit orders"
                     amber
                   />
-                  <Metric
-                    label="Refunded"
-                    value={money(data.summary.refunded, t, true)}
-                    foot="Confirmed refunds, including excess returns"
-                  />
+                  {data.summary.refunded > 0 && (
+                    <Metric
+                      label="Refunded"
+                      value={money(data.summary.refunded, t, true)}
+                      foot="Confirmed returns"
+                    />
+                  )}
                 </div>
               )}
               {access.managePayments && (
                 <>
-                  <ReconciliationQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
-                  <CancellationQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
-                  <RefundQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
+                  {advancedFinanceEnabled && (
+                    <>
+                      <ReconciliationQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
+                      <CancellationQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
+                      <RefundQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
+                    </>
+                  )}
                   <OfflinePaymentQueue tenant={t} onOpen={setPaymentOrder} revision={data} />
-                  <BillingQueue onOpen={setPaymentOrder} revision={data} />
+                  {advancedFinanceEnabled && (
+                    <BillingQueue onOpen={setPaymentOrder} revision={data} />
+                  )}
                 </>
               )}
               <div className="panel table-wrap">
@@ -1262,6 +1274,7 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
                 title: d.get('title'),
                 specialty: d.get('specialty'),
                 description: d.get('description'),
+                catalogDetails: catalogDetailsFromForm(d),
                 credits: Number(d.get('credits')),
                 creditType: d.get('creditType'),
                 faculty: d.get('faculty'),
@@ -1280,9 +1293,10 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
                 <input name="faculty" />
               </Field>
             </div>
-            <Field label="Description">
+            <Field label="Short description" hint="Used on catalog listing cards.">
               <textarea name="description" rows={3} required />
             </Field>
+            <CatalogDetailsEditor />
             <div className="form-grid">
               <Field label="Credit hours">
                 <input
@@ -1317,6 +1331,7 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
             onSubmit={async (d) => {
               await api('/offerings', 'POST', {
                 programId: d.get('programId'),
+                catalogDetails: catalogDetailsFromForm(d),
                 kind: modal,
                 title: d.get('title'),
                 startsAt: d.get('startsAt') || undefined,
@@ -1353,6 +1368,11 @@ function Workspace({ identity, logout }: { identity: Row; logout: () => void }) 
             <Field label="Offering title">
               <input name="title" required />
             </Field>
+            <CatalogDetailsEditor
+              offering
+              inherited={data.programs.find((p: Row) => p.id === selectedProgram)?.catalog_details}
+              summary={data.programs.find((p: Row) => p.id === selectedProgram)?.description}
+            />
             {modal === 'workshop' ? (
               <>
                 <div className="form-grid">
@@ -2337,8 +2357,12 @@ function Settings({ tenant, settings }: { tenant: Row; settings: Row }) {
           <TeamSettings />
           <WebsiteIntegration academySlug={tenant.slug} />
           <PaymentPolicy />
-          <CancellationPolicySettings />
-          <BillingSettings tenant={tenant} />
+          {advancedFinanceEnabled && (
+            <>
+              <CancellationPolicySettings />
+              <BillingSettings tenant={tenant} />
+            </>
+          )}
         </>
       )}
       <div className="settings-grid">

@@ -5,9 +5,13 @@ import { safeReference, type RichNode } from '../shared/rich-text';
 export default function RichTextEditor({
   initial,
   onChange,
+  label = 'Lesson content',
+  help = 'Structure your lesson with headings, lists and references. Select text to format it. Links open in a new tab when learners read.',
 }: {
   initial: RichNode;
   onChange: (doc: RichNode) => void;
+  label?: string;
+  help?: string;
 }) {
   const latest = useRef(onChange);
   latest.current = onChange;
@@ -98,13 +102,12 @@ export default function RichTextEditor({
   return (
     <section className="rich-editor">
       <p className="field-label" id={labelId}>
-        Lesson content
+        {label}
       </p>
       <p className="muted" id={helpId}>
-        Structure your lesson with headings, lists and references. Select text to format it. Links
-        open in a new tab when learners read.
+        {help}
       </p>
-      <div className="rich-toolbar" role="group" aria-label="Lesson formatting">
+      <div className="rich-toolbar" role="group" aria-label={`${label} formatting`}>
         <select
           aria-label="Paragraph style"
           value={state?.heading || 'p'}

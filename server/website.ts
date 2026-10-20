@@ -7,6 +7,10 @@ import { development, origin } from './config.ts';
 import { type Database, type Queryable, type Row, one, tenantTx } from './db.ts';
 import { AppError, assert, requireValue } from './errors.ts';
 import { event } from './domain.ts';
+import { catalogDetails } from './catalog-details.ts';
+import { publicCurriculum, publicPreviewLesson, previewLessonData } from './course-previews.ts';
+import { documentBytes, mediaServices, type MediaServices } from './media.ts';
+import { signedPlayback } from './providers.ts';
 
 const params = z
   .record(z.string().max(100), z.string().max(2000))
@@ -61,6 +65,11 @@ export async function websiteDetails(tx: Queryable, tenant: Row) {
     publishableKey: config.settings.publicApiKey || null,
     allowedOrigins: config.settings.websiteOrigins || [],
     keyUpdatedAt: config.settings.publicApiKeyUpdatedAt || null,
+    programs: (
+      await tx.query(
+        'SELECT id,title,slug FROM programs WHERE published AND archived_at IS NULL ORDER BY title',
+      )
+    ).rows,
     offerings: (
       await tx.query(
         `SELECT o.id,o.title,o.kind FROM offerings o JOIN programs p
@@ -152,7 +161,13 @@ export async function createWebsiteInquiry(tx: Queryable, tenant: Row, body: unk
 // This router uses only the publishable key; staff/learner session cookies grant no access.
 export function websiteApi(
   db: Database,
-  offerings: (tx: Queryable, publicOnly: boolean) => Promise<Row[]>,
+  offerings: (
+    tx: Queryable,
+    publicOnly: boolean,
+    facultyId?: string,
+    lookup?: { reference: string; kind: string },
+  ) => Promise<Row[]>,
+  media: MediaServices = mediaServices(),
 ) {
   const router = Router({ mergeParams: true });
   router.use(async (req, res, next) => {
@@ -222,6 +237,87 @@ export function websiteApi(
       throw new AppError(401, 'Invalid publishable key', 'INVALID_API_KEY');
     next();
   });
+  const detailsUrl = (tenant: Row, resource: string, reference: string) =>
+    new URL(
+      `/api/v1/${tenant.slug}/${resource}/${encodeURIComponent(reference)}`,
+      origin,
+    ).toString();
+  const publicOffering = ({ tenant_id: _tenant, catalog_details: _stored, ...offering }: Row) =>
+    offering;
+  router.use((_req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store');
+    next();
+  });
+  router.get('/courses/:reference/curriculum', async (req, res) => {
+    const data = await tenantTx(db, res.locals.websiteTenant.id, 'system', (tx) =>
+      publicCurriculum(tx, String(req.params.reference)),
+    );
+    res.json({ version: 'v1', data });
+  });
+  router.get('/courses/:reference/lessons/:lessonId/preview', async (req, res) => {
+    const data = await tenantTx(db, res.locals.websiteTenant.id, 'system', async (tx) => {
+      const { lesson } = await publicPreviewLesson(
+        tx,
+        String(req.params.reference),
+        z.string().uuid().parse(req.params.lessonId),
+      );
+      return {
+        ...previewLessonData(lesson),
+        ...(lesson.kind === 'video'
+          ? {
+              playback: {
+                url: await signedPlayback(lesson.asset_id, lesson.duration_seconds, 900),
+                expiresAt: new Date(Date.now() + 900000).toISOString(),
+              },
+            }
+          : {}),
+      };
+    });
+    res.json({ version: 'v1', data });
+  });
+  router.get('/courses/:reference/lessons/:lessonId/document', async (req, res) => {
+    const bytes = await tenantTx(db, res.locals.websiteTenant.id, 'system', async (tx) => {
+      const { course, lesson } = await publicPreviewLesson(
+        tx,
+        String(req.params.reference),
+        z.string().uuid().parse(req.params.lessonId),
+      );
+      assert(lesson.kind === 'pdf', 'Document preview not found', 404);
+      return (await documentBytes(tx, course.id, lesson.id, media)).bytes;
+    });
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', 'attachment; filename="course-preview.pdf"');
+    res.setHeader('Content-Security-Policy', "sandbox; default-src 'none'");
+    res.send(bytes);
+  });
+  router.get('/:resource/:reference', async (req, res) => {
+    const tenant = res.locals.websiteTenant;
+    const resource = String(req.params.resource);
+    const reference = z.string().min(1).max(600).parse(req.params.reference);
+    const data = await tenantTx(db, tenant.id, 'system', async (tx) => {
+      if (resource === 'programs') {
+        const p = requireValue(
+          await one(
+            tx,
+            'SELECT id,title,slug,specialty,description,objectives,faculty,credits,credit_type,catalog_details FROM programs WHERE (id::text=$1 OR slug=$1) AND published AND archived_at IS NULL',
+            [reference],
+          ),
+          'Program not found',
+        );
+        const { catalog_details, ...program } = p;
+        return { ...program, details: catalogDetails(catalog_details, null, p.description) };
+      }
+      if (resource === 'runs' || resource === 'courses') {
+        const found = await offerings(tx, true, undefined, {
+          reference,
+          kind: resource === 'runs' ? 'workshop' : 'course',
+        });
+        return publicOffering(requireValue(found[0], 'Offering not found'));
+      }
+      throw new AppError(404, 'Resource not found', 'NOT_FOUND');
+    });
+    res.json({ version: 'v1', data });
+  });
   router.get('/:resource', async (req, res) => {
     const tenant = res.locals.websiteTenant;
     const data = await tenantTx(db, tenant.id, 'system', async (tx) => {
@@ -231,12 +327,15 @@ export function websiteApi(
           await tx.query(
             'SELECT id,title,slug,specialty,description,objectives,faculty,credits,credit_type FROM programs WHERE published AND archived_at IS NULL ORDER BY title',
           )
-        ).rows;
+        ).rows.map((p) => ({ ...p, detailsUrl: detailsUrl(tenant, resource, p.slug) }));
       if (resource === 'runs' || resource === 'courses') {
         const list = await offerings(tx, true);
         return list
           .filter((o) => o.kind === (resource === 'courses' ? 'course' : 'workshop'))
-          .map(({ tenant_id: _tenantId, ...offering }) => offering);
+          .map((row) => {
+            const { details: _details, ...offering } = publicOffering(row);
+            return { ...offering, detailsUrl: detailsUrl(tenant, resource, offering.slug) };
+          });
       }
       if (resource === 'offers')
         return (

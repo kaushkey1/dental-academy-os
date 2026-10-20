@@ -125,7 +125,11 @@ export async function sendCode(identifier: string, kind: 'staff' | 'learner', co
     });
   }
 }
-export async function signedPlayback(playbackId: string, durationSeconds = 3600) {
+export async function signedPlayback(
+  playbackId: string,
+  durationSeconds = 3600,
+  ttlSeconds?: number,
+) {
   assert(/^[a-zA-Z0-9]+$/.test(playbackId), 'Invalid video asset');
   assert(
     process.env.MUX_SIGNING_KEY_ID && process.env.MUX_SIGNING_PRIVATE_KEY,
@@ -152,7 +156,9 @@ export async function signedPlayback(playbackId: string, durationSeconds = 3600)
     .setProtectedHeader({ alg: 'RS256', kid: process.env.MUX_SIGNING_KEY_ID })
     .setSubject(playbackId)
     .setAudience('v')
-    .setExpirationTime(Math.floor(Date.now() / 1000) + Math.max(7200, durationSeconds + 1800))
+    .setExpirationTime(
+      Math.floor(Date.now() / 1000) + (ttlSeconds ?? Math.max(7200, durationSeconds + 1800)),
+    )
     .sign(key);
   return `https://stream.mux.com/${playbackId}.m3u8?token=${token}`;
 }

@@ -1,4 +1,5 @@
 import { PolicyTerms } from './CancellationPolicy';
+import { RichTextContent } from './RichTextContent';
 import { BuyerBillingFields, buyerBillingFromForm } from './Billing';
 import { PaymentDetails, PaymentModal } from './PaymentDetails';
 import { LearnerPostTest } from './LearnerPostTest';
@@ -228,7 +229,13 @@ export function Checkout({
               {o.credits} {o.credit_type} credits
             </span>
           </div>
-          <p className="checkout-description">{o.description}</p>
+          <section className="catalog-page-content" aria-label="About this offering">
+            <RichTextContent
+              format={o.details?.format}
+              document={o.details?.document}
+              plain={o.description || ''}
+            />
+          </section>
           {o.objectives?.length > 0 && (
             <section className="learning-objectives">
               <h2>What you’ll learn</h2>
@@ -466,9 +473,7 @@ export function Checkout({
                   )}
                   <h3>Billing details</h3>
                   <BuyerBillingFields tenant={t} value={{ name: profile?.name || '' }} />
-                  <p className="muted">
-                    Your final total and tax lines are calculated on the server before payment.
-                  </p>
+                  <p className="muted">Review your final total before paying.</p>
                 </Form>
               )}
               {error && (

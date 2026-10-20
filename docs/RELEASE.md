@@ -1,6 +1,6 @@
 # October 31 release contract
 
-Updated: October 14, 2026. **Status: implementation in progress; not ready for live use.**
+Updated: October 20, 2026. **Status: implementation in progress; not ready for live use.**
 
 User decisions: BOTH academies, INCLUDING complete online courses. Target is October 31,
 2026 (Asia/Kolkata planning date). The user subsequently selected GitHub + Netlify hosting, with a separate copy of local data for demonstrations; preserve GCP compatibility. A working prototype
@@ -12,28 +12,28 @@ release gates; do not silently reduce scope or label open work as complete.
 
 ## Acceptance matrix
 
-| Area                | Implemented and locally tested                                                                                                                                                                                                                                                           | Required before finished release                                                                                                                                                                                                                                         |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Tenancy             | Tenant-scoped SQL, forced RLS, composite foreign keys, two configuration-driven sample academies                                                                                                                                                                                         | Production-role server Postgres tests; real onboarding; custom domains/TLS                                                                                                                                                                                               |
-| Roles               | Admin team management; capability-driven staff navigation; faculty assignments/own-run access; marketing read-only leads/results; immediate membership disable                                                                                                                           | Platform admin; staff second factor; per-session revocation and session inventory                                                                                                                                                                                        |
-| Catalog             | Program/offering edit and archive/restore; revision guards; academy-timezone schedules; capacity/credit safeguards; ticket tiers/deposits/allocations; scoped public/private coupons                                                                                                     | Cancellation/refund workflow; schedule-change delivery; corrections after attendance/certification; approved catalog/prices/credits                                                                                                                                      |
-| Checkout            | Mobile OTP session; profile/license capture; held inventory; coupon/deposit calculation; URL params on order; group assignment                                                                                                                                                           | First-touch and abandoned funnel timing; returning-profile refinements; reviewed tax/place-of-supply calculation; policy acceptance; optional post-payment redirect                                                                                                      |
-| Payments            | Durable initial/balance requests; uncertain-create recovery; buyer/staff history; deposit deadlines; provider capture and review ledger; signed webhook inbox/deduplication; private offline proofs/admin approval; received-money resolution queue/allocations; approved excess returns | Real provider staging; automatic cutoff reminders/release; provider link expiry at hold deadline; EMI/minimum amount validation; daily provider reconciliation; returns for unconfirmed/applied payments; online shortfall collection; real offline-operation acceptance |
-| Tax & invoices      | Buyer billing capture; legal issuer settings; annual tenant numbering; immutable invoices/receipts; private PDF preview/download; missing-details recovery queue; sample GST templates                                                                                                   | Live GST place-of-supply workflow (hard gated); reviewed regional policies; advance vouchers; exempt/export/UTGST handling; IRN if required; credit notes; historical import; multilingual fonts; accountant approval                                                    |
-| Refunds & transfers | Versioned accepted cancellation policies; whole-booking request/admin decision; applied/excess refund ledger; private cancellation statements and original-invoice-linked credit notes; durable provider attempts and verified offline returns                                           | Real provider/accountant review; manual-provider reconciliation; retry worker; learner/run transfers; price differences; partial-seat and bulk cancellation                                                                                                              |
-| Leads               | Staff entry, notes/stages/lost reasons; public inquiry and waitlist capture                                                                                                                                                                                                              | Owner assignment/filtering; abandoned recovery; coordinator discounts/payment links; full timeline; waitlist offer rotation                                                                                                                                              |
-| Seat management     | Transactional reservations; TTL-aware availability; explicit hold API                                                                                                                                                                                                                    | Hold UI/release; multi-connection load test; no-show and deposit-cutoff jobs                                                                                                                                                                                             |
-| Attendance          | Per-session manual check-in; assigned faculty access; final-session attendance state; idempotent events; reason/actor audit                                                                                                                                                              | QR tickets/scanner; offline queue/conflict sync; learner self check-in; bulk actions; partial-credit rules                                                                                                                                                               |
-| Certificates        | Eligibility gating; PDF; random public verification; snapshot; revocation; completion triggers                                                                                                                                                                                           | Academy templates/logos/signatures; framework-specific required fields; approved accreditation config; partial credits; reissue/correction; complete PDF QA                                                                                                              |
-| Courses             | Rich-text/PDF/video authoring; private media and reading resume; recoverable lesson drafts/autosave and publication checks; versioned assessments/retakes; grants and workshop inclusions; complete photography review course with 12 lessons, workbook and capstone in both academies   | Academy-approved content/faculty/accreditation; live GCS/Mux checks; legacy imports; external grant/expiry delivery; mobile video and large-document performance                                                                                                         |
-| Learner portal      | Workshops/courses; course player; buyer payment history/balance links/offline review status; group-seat assignment; feedback; certificate download                                                                                                                                       | QR tickets; cancellation/transfer requests; profile editing; payment list pagination; complete accessible/mobile UX                                                                                                                                                      |
-| Notifications       | Durable domain-event outbox; course portal inbox with read history, expiry preferences, event consumer, scheduled access checks and retry backoff                                                                                                                                        | BSP choice; WhatsApp template approvals; external delivery/receipts; general journey schedules; email invoice/certificate attachments; deployed scheduler/alerts                                                                                                         |
-| Public API          | Admin website setup; tenant keys and rotation; origin allowlist/CORS; v1 catalog, checkout and enquiries; copyable examples, guide and connection test                                                                                                                                   | Dedicated pricing/content resources; pagination; shared per-key rate limiting/cache; webhook subscriptions/delivery; WordPress widgets; deployed-site acceptance                                                                                                         |
-| Reporting           | Admin totals; marketing per-offering receipts/refunds; order CSV with URL columns; license/lead queues; course learning progress                                                                                                                                                         | Full date/run/program reports; funnel/recovery metrics; risk thresholds; platform reports; all-entity export; pagination                                                                                                                                                 |
-| Privacy             | Consent record; tenant RLS; no patient entities; safe CSV                                                                                                                                                                                                                                | Academy-approved notices/retention; export/deletion jobs; data inventory; recovery/legal review                                                                                                                                                                          |
-| Infrastructure      | Production env guard; stateless Node build; Docker/GCP templates; CI definition                                                                                                                                                                                                          | Docker execution; GCP provisioning; secrets; storage/jobs; monitoring; backups/restore; custom domains; load/performance tests                                                                                                                                           |
-| Migration           | None yet                                                                                                                                                                                                                                                                                 | Icode catalog; LearnDash program/run dedupe; learner/course access import; historical certificate import; counts and reconciliation; old URL redirects                                                                                                                   |
-| QA                  | 219 invariant/authenticated HTTP/provider-contract tests; production build; targeted desktop/mobile browser checks                                                                                                                                                                       | Browser visual/keyboard/responsive checks; real Postgres concurrency; real provider staging; security review; both-academy acceptance sign-off                                                                                                                           |
+| Area                | Implemented and locally tested                                                                                                                                                                                                                                                                                                                                                                                           | Required before finished release                                                                                                                                                                                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Tenancy             | Tenant-scoped SQL, forced RLS, composite foreign keys, two configuration-driven sample academies                                                                                                                                                                                                                                                                                                                         | Production-role server Postgres tests; real onboarding; custom domains/TLS                                                                                                                                                                                               |
+| Roles               | Admin team management; capability-driven staff navigation; faculty assignments/own-run access; marketing read-only leads/results; immediate membership disable                                                                                                                                                                                                                                                           | Platform admin; staff second factor; per-session revocation and session inventory                                                                                                                                                                                        |
+| Catalog             | Rich-text public catalog details with program inheritance and offering overrides; program/offering edit and archive/restore; revision guards; academy-timezone schedules; capacity/credit safeguards; ticket tiers/deposits/allocations; scoped public/private coupons                                                                                                                                                   | Cancellation/refund workflow; schedule-change delivery; corrections after attendance/certification; approved catalog/prices/credits                                                                                                                                      |
+| Checkout            | Mobile OTP session; profile/license capture; held inventory; coupon/deposit calculation; URL params on order; group assignment                                                                                                                                                                                                                                                                                           | First-touch and abandoned funnel timing; returning-profile refinements; reviewed tax/place-of-supply calculation; policy acceptance; optional post-payment redirect                                                                                                      |
+| Payments            | Simplified total/paid/balance, payment links, offline proofs and history; advanced finance controls hidden by product decision; durable initial/balance requests; uncertain-create recovery; buyer/staff history; deposit deadlines; provider capture and review ledger; signed webhook inbox/deduplication; private offline proofs/admin approval; received-money resolution queue/allocations; approved excess returns | Real provider staging; automatic cutoff reminders/release; provider link expiry at hold deadline; EMI/minimum amount validation; daily provider reconciliation; returns for unconfirmed/applied payments; online shortfall collection; real offline-operation acceptance |
+| Tax & invoices      | Buyer billing capture; legal issuer settings; annual tenant numbering; immutable invoices/receipts; private PDF preview/download; missing-details recovery queue; sample GST templates                                                                                                                                                                                                                                   | Live GST place-of-supply workflow (hard gated); reviewed regional policies; advance vouchers; exempt/export/UTGST handling; IRN if required; credit notes; historical import; multilingual fonts; accountant approval                                                    |
+| Refunds & transfers | Versioned accepted cancellation policies; whole-booking request/admin decision; applied/excess refund ledger; private cancellation statements and original-invoice-linked credit notes; durable provider attempts and verified offline returns                                                                                                                                                                           | Real provider/accountant review; manual-provider reconciliation; retry worker; learner/run transfers; price differences; partial-seat and bulk cancellation                                                                                                              |
+| Leads               | Staff entry, notes/stages/lost reasons; public inquiry and waitlist capture                                                                                                                                                                                                                                                                                                                                              | Owner assignment/filtering; abandoned recovery; coordinator discounts/payment links; full timeline; waitlist offer rotation                                                                                                                                              |
+| Seat management     | Transactional reservations; TTL-aware availability; explicit hold API                                                                                                                                                                                                                                                                                                                                                    | Hold UI/release; multi-connection load test; no-show and deposit-cutoff jobs                                                                                                                                                                                             |
+| Attendance          | Per-session manual check-in; assigned faculty access; final-session attendance state; idempotent events; reason/actor audit                                                                                                                                                                                                                                                                                              | QR tickets/scanner; offline queue/conflict sync; learner self check-in; bulk actions; partial-credit rules                                                                                                                                                               |
+| Certificates        | Eligibility gating; PDF; random public verification; snapshot; revocation; completion triggers                                                                                                                                                                                                                                                                                                                           | Academy templates/logos/signatures; framework-specific required fields; approved accreditation config; partial credits; reissue/correction; complete PDF QA                                                                                                              |
+| Courses             | Public module outlines and explicit module/lesson free previews; rich-text/PDF/video authoring; private media and reading resume; recoverable lesson drafts/autosave and publication checks; versioned assessments/retakes; grants and workshop inclusions; complete photography review course with 12 lessons, workbook and capstone in both academies                                                                  | Academy-approved content/faculty/accreditation; live GCS/Mux checks; legacy imports; external grant/expiry delivery; mobile video and large-document performance                                                                                                         |
+| Learner portal      | Workshops/courses; course player; buyer payment history/balance links/offline review status; group-seat assignment; feedback; certificate download                                                                                                                                                                                                                                                                       | QR tickets; cancellation/transfer requests; profile editing; payment list pagination; complete accessible/mobile UX                                                                                                                                                      |
+| Notifications       | Durable domain-event outbox; course portal inbox with read history, expiry preferences, event consumer, scheduled access checks and retry backoff                                                                                                                                                                                                                                                                        | BSP choice; WhatsApp template approvals; external delivery/receipts; general journey schedules; email invoice/certificate attachments; deployed scheduler/alerts                                                                                                         |
+| Public API          | Admin website setup; tenant keys and rotation; origin allowlist/CORS; public curriculum and gated text/PDF/signed-video previews; v1 catalog and individual detail pages with generated HTML/JSON/text, checkout and enquiries; copyable examples, guide and connection test                                                                                                                                             | Dedicated pricing/content resources; pagination; shared per-key rate limiting/cache; webhook subscriptions/delivery; WordPress widgets; deployed-site acceptance                                                                                                         |
+| Reporting           | Admin totals; marketing per-offering receipts/refunds; order CSV with URL columns; license/lead queues; course learning progress                                                                                                                                                                                                                                                                                         | Full date/run/program reports; funnel/recovery metrics; risk thresholds; platform reports; all-entity export; pagination                                                                                                                                                 |
+| Privacy             | Consent record; tenant RLS; no patient entities; safe CSV                                                                                                                                                                                                                                                                                                                                                                | Academy-approved notices/retention; export/deletion jobs; data inventory; recovery/legal review                                                                                                                                                                          |
+| Infrastructure      | Production env guard; stateless Node build; Docker/GCP templates; CI definition                                                                                                                                                                                                                                                                                                                                          | Docker execution; GCP provisioning; secrets; storage/jobs; monitoring; backups/restore; custom domains; load/performance tests                                                                                                                                           |
+| Migration           | None yet                                                                                                                                                                                                                                                                                                                                                                                                                 | Icode catalog; LearnDash program/run dedupe; learner/course access import; historical certificate import; counts and reconciliation; old URL redirects                                                                                                                   |
+| QA                  | 233 invariant/authenticated HTTP/provider-contract tests; production build; targeted desktop/mobile browser checks                                                                                                                                                                                                                                                                                                       | Browser visual/keyboard/responsive checks; real Postgres concurrency; real provider staging; security review; both-academy acceptance sign-off                                                                                                                           |
 
 ## Next implementation slices
 
@@ -42,7 +42,10 @@ release gates; do not silently reduce scope or label open work as complete.
    Finish academy editorial/faculty decisions and keep reviewing useful learner outcomes,
    including course migration. Course portal access/expiry updates are implemented; external
    delivery and provider checks await setup and staging.
-2. Payment work is parked at the current tested checkpoint at the user's request. Resume
+2. Payment work is parked at the current tested checkpoint at the user's request. On October 19,
+   the user explicitly asked to hide complicated tax/refund calculations and keep payments simple.
+   Advanced configuration, reconciliation/cancellation/refund tools and invoice repair queues are
+   now hidden; existing financial records, issued documents and accounting safeguards remain. Resume
    remaining money/provider/tax requirements only when needed for release acceptance or
    explicitly reprioritized. No further payment micro-refinements are the immediate task.
 3. Extend the course event worker to other scheduled journey rules and WhatsApp/email adapters,
@@ -653,7 +656,6 @@ Desktop/mobile captures are in ../../work/journey-review/course-updates/. No pay
 course publishing/prices, teaching approvals or real-provider settings were changed. Actual
 Postgres concurrency, scheduler capacity/monitoring and WhatsApp/email delivery remain open.
 
-
 October 14 Netlify deployment: the private kaushkey1/dental-academy-os repository is
 connected to dental-academy-os-kaushkey with a read-only deploy key and push webhook.
 Production deploys from main now build successfully, including Express API functions
@@ -691,3 +693,129 @@ require the shared demo access code. The demo is not the finished production
 release; original release gates remain open. New document/proof uploads are limited to
 4 MB on Netlify, with matching UI validation. The existing HLS bundle warning remains.
 See NETLIFY.md for the deployment/runbook.
+
+October 17 catalog details update (locally verified; hosted deployment pending): program,
+workshop and course creation/editing now include a rich-text catalog page editor with
+headings, emphasis, lists, quotations, links and an inline preview. Programs keep their
+plain short description for listing cards. Offerings inherit program details by default,
+can save their own page, and can return to inheritance. Saved changes use existing
+revision guards, role checks, tenant isolation and staff audit. Published changes appear
+immediately; draft and archived offerings remain private.
+
+Migration 027 adds nullable catalog_details JSONB fields to programs and offerings without
+rewriting their existing descriptions. Missing fields on older API update requests preserve
+existing rich text. Empty content restores the description/program fallback. Public detail
+endpoints are GET /api/v1/:academy/programs/:reference, runs/:reference and courses/:reference,
+where reference is an ID or slug. List records supply detailsUrl and omit full documents.
+Detail responses supply details.format, source, document, text and allowlisted generated
+HTML. Course lessons and lesson drafts remain private. Server validation limits content
+and rejects script/embed nodes and unsafe URLs; the serializer escapes text and attributes.
+The hosted booking page renders the same resolved content with React. Academy settings
+now includes all three detail examples and an updated downloadable API guide.
+
+Validation: production build passed; all 226 tests passed. Seven new integration tests
+cover both academies, create/update persistence, inheritance/reset, stale saves, legacy
+clients, HTML safety, size limits, role/tenant/key/origin boundaries, draft/archive visibility,
+audit records and direct lookup beyond the list cap. The final targeted catalog/website
+checks passed after correcting cURL example formatting. Local browser checks saved and
+reopened all three builders, previewed headings/lists, switched a workshop back to inherited
+content, and verified that the public booking page and API examples use it. Labeled local
+review samples are retained. Screenshots/logs: ../../work/catalog-details/ and
+../../work/catalog-details-*.log. The existing HLS bundle size warning remains.
+
+Deployment is blocked externally: on October 17 Netlify reported that the team exceeded
+its credit limit and all projects/deploys are paused. Production database tooling also
+remains read-only; applying migration 027 requires temporarily approved owner access,
+which must be disabled again afterward. Do not deploy code referencing the new columns
+before that migration succeeds. No hosting plan upgrade or access expansion was performed.
+The feature is kept on its review branch pending hosting recovery and schema migration.
+
+## October 19: simpler payments and public course previews
+
+Product scope: hide the complex tax/refund interface and let website visitors inspect a course's
+modules and sample explicitly free content without buying or signing in. The main payment view
+now focuses on order total, paid, balance, payment links, offline proof review and history.
+`advancedFinanceEnabled=false` hides tax/issuer settings, cancellation policy configuration,
+refund calculators/actions, reconciliation tools and billing repair queues. Issued invoices/receipts
+and actual recorded refunds remain visible. This is a UI scope decision: stored prices, billing
+validation, accounting, provider handling and existing money records have not been rewritten.
+
+Migration 028 adds a default-false lesson preview flag and independent preview configuration
+revision. Admin/coordinator course builders can select a module's current published lessons or
+individual lessons, then save one atomic change. New and restored lessons start private. Stale
+preview/curriculum revisions and incomplete/cross-tenant lesson sets are rejected; enabling
+media previews requires a verified ready media asset. Preview changes preserve saved lesson
+drafts, curriculum requirements and learner progress, and produce audit/outbox records.
+
+Public website endpoints, under `/api/v1/:academy`, use the existing publishable key and origin
+allowlist and always return `Cache-Control: no-store`:
+
+- `GET /courses/:reference/curriculum`: module and lesson titles, kinds, durations and preview
+  availability; no paid bodies, internal media IDs, quiz answers, drafts or learner information.
+- `GET /courses/:reference/lessons/:lessonId/preview`: explicitly free text rendered through
+  the allowlisted rich-text renderer, PDF metadata or a signed video URL with a 15-minute expiry.
+- `GET /courses/:reference/lessons/:lessonId/document`: verified PDF bytes for explicitly free
+  PDF lessons. Websites fetch with the publishable key before rendering or downloading.
+
+Every request rechecks course/program publication, archive state and preview access; media
+requests also recheck readiness. Closed/completed publicly listed courses can retain previews.
+Anonymous views do not enroll learners, record progress or award certificates. Removing preview
+access blocks new requests immediately. Already downloaded content cannot be recalled, and
+already issued video tokens remain usable until their short expiry. Live Mux setup must allow
+the website origin in playback restrictions. Academy settings includes copyable endpoint examples
+and the updated downloadable integration guide.
+
+Evidence: `npm run build` passed (existing large HLS chunk warning remains); all **233 tests**
+passed, including seven new isolated HTTP suites for both academies covering preview access,
+RLS, roles, CORS/keys, draft visibility, revocation, archive/publication gates, atomic saves,
+PDF byte integrity and signed video expiry. Actual video streaming was not verified because
+Mux is not configured; tests generate an isolated signing key and do not claim provider success.
+
+The separate `../icode-website-api-test` remains outside this repository. It now renders the real
+module outline, locked lesson labels, free text/PDF previews and a video player. Seven local
+integration checks passed. Browser review verified module/individual selection persistence,
+anonymous rich text, PDF page navigation, keyboard dismissal, and payment/settings simplification.
+The local Icode sample course now has three previews: Welcome to your course and the two existing
+Sample resources lessons. All other lessons remain private; no teaching content was replaced.
+
+Deployment remains pending. Netlify team credits were exhausted on the last hosted check
+(October 17), and the production migration channel was read-only. Restore hosting and approve
+owner migration access before applying **027 and 028** and deploying this branch. No production
+settings, financial records or hosted course content were changed for this slice.
+
+## October 20: presentation course installed locally
+
+The user requested a useful, polished course to present. Added an opt-in presentation edition,
+**Clinical Photography: From First Frame to Portfolio**, in both local academies. Six modules
+contain twelve required rich-text lessons, original worked decisions, practice tasks, formative
+checks and a five-view model portfolio challenge. An optional, illustrated sixteen-page PDF
+combines camera/geometry/sequence guides, worksheets, six practice labs and a review rubric.
+A sixteen-question scenario assessment uses an 80% threshold and three attempts.
+
+The first two lessons, complete workbook and kit/setup lesson are free previews. Other lesson
+bodies stay locked on the website. A rich catalog page explains the outcome, format, prerequisites,
+access and demonstration status. Display price is INR 2,499 with 180-day access and no approved
+credits. Both courses have assigned demo faculty and a fictional complimentary learner. The
+local Icode website and full learner player are open for presentation. No patient images, actual
+learner credentials, clinical competence grading, accreditation or provider success is implied.
+
+The local-only installer uses the existing tenant-authenticated catalog, authoring, media, quiz,
+preview and access APIs. It is separate from seed/migrations/build/startup and preserves existing
+review courses. Reopening uses existing identities and keeps editorial choices; explicit refresh
+flags are documented. PDF bytes are content-addressed and verified by the normal media pipeline.
+No core payment, tenant, completion or provider behavior changed in this slice.
+
+Validation: build and all 233 tests passed. Assigned faculty/learner HTTP checks in each academy
+confirmed the curriculum, assessment, answer-key privacy, role boundaries and pending completion
+requirements. Icode website HTTP checks confirmed six modules, four free previews, nine locked
+lessons, and a sixteen-page PDF whose hash matches the packaged asset. The separate website is
+configured only for Icode. Browser review covered final copy, free workbook, lesson player,
+assessment display and PDF navigation. All workbook pages were rendered and visually inspected.
+No fabricated lesson completion, test score, certificate, live payment or production installation
+was performed. The admin OTP account hit the persistent setup rate limit during repeated
+installation attempts; it was left intact and final reads used the assigned demo faculty account.
+
+Source and presentation instructions: `content/photography-showcase/README.md`. Hosted deployment
+still awaits the previously recorded Netlify access/migration gates. This course is ready for
+product demonstrations; academy content/faculty/local-policy approval remains required for
+clinical delivery.

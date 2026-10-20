@@ -3,6 +3,7 @@ import { Refunds } from './Refunds';
 import { BillingDocuments } from './Billing';
 import { OfflinePayments } from './OfflinePayments';
 import { PaymentReconciliation } from './Reconciliation';
+import { advancedFinanceEnabled } from './product-features';
 import { useEffect, useState } from 'react';
 import { api, Button, Field, Form, Modal, Status, money, type Row } from './shared';
 export function PaymentDetails({
@@ -99,7 +100,7 @@ export function PaymentDetails({
           <strong>{money(data.total, tenant)}</strong>
         </div>
         <div>
-          <small>Applied payments</small>
+          <small>Paid</small>
           <strong>{money(data.paid, tenant)}</strong>
         </div>
         <div>
@@ -212,7 +213,7 @@ export function PaymentDetails({
               {busy
                 ? 'Checking payment…'
                 : staff
-                  ? 'Create / recover payment link'
+                  ? 'Get payment link'
                   : data.status === 'partial'
                     ? 'Pay remaining balance'
                     : 'Continue to secure payment'}
@@ -272,37 +273,42 @@ export function PaymentDetails({
           onUpdated?.();
         }}
       />
-      <PaymentReconciliation
-        data={data}
-        tenant={tenant}
-        staff={staff}
-        onUpdated={async () => {
-          await load();
-          onUpdated?.();
-        }}
-      />
-      <Cancellations
-        data={data}
-        tenant={tenant}
-        staff={staff}
-        onUpdated={async () => {
-          await load();
-          onUpdated?.();
-        }}
-      />
-      <Refunds
-        data={data}
-        tenant={tenant}
-        staff={staff}
-        onUpdated={async () => {
-          await load();
-          onUpdated?.();
-        }}
-      />
+      {advancedFinanceEnabled && (
+        <>
+          <PaymentReconciliation
+            data={data}
+            tenant={tenant}
+            staff={staff}
+            onUpdated={async () => {
+              await load();
+              onUpdated?.();
+            }}
+          />
+          <Cancellations
+            data={data}
+            tenant={tenant}
+            staff={staff}
+            onUpdated={async () => {
+              await load();
+              onUpdated?.();
+            }}
+          />
+          <Refunds
+            data={data}
+            tenant={tenant}
+            staff={staff}
+            onUpdated={async () => {
+              await load();
+              onUpdated?.();
+            }}
+          />
+        </>
+      )}
       <BillingDocuments
         data={data}
         tenant={tenant}
         staff={staff}
+        simple={!advancedFinanceEnabled}
         onUpdated={async () => {
           await load();
           onUpdated?.();

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { api, Button, Field, Form, Modal, money, type Row } from './shared';
+import { CatalogDetailsEditor, catalogDetailsFromForm } from './CatalogDetailsEditor';
 
 export function localTime(value: string | null | undefined, zone: string) {
   if (!value) return '';
@@ -57,6 +58,7 @@ export function ProgramActions({
                 title: d.get('title'),
                 specialty: d.get('specialty'),
                 description: d.get('description'),
+                catalogDetails: catalogDetailsFromForm(d),
                 objectives: String(d.get('objectives'))
                   .split('\n')
                   .map((x) => x.trim())
@@ -75,7 +77,7 @@ export function ProgramActions({
             <Field label="Specialty">
               <input name="specialty" defaultValue={p.specialty} required />
             </Field>
-            <Field label="Description">
+            <Field label="Short description" hint="Used on catalog listing cards.">
               <textarea
                 name="description"
                 rows={4}
@@ -84,6 +86,7 @@ export function ProgramActions({
                 maxLength={10000}
               />
             </Field>
+            <CatalogDetailsEditor initial={p.catalog_details} summary={p.description} />
             <Field label="Learning objectives" hint="One objective per line.">
               <textarea name="objectives" rows={4} defaultValue={p.objectives.join('\n')} />
             </Field>
@@ -205,6 +208,7 @@ export function OfferingActions({
                 revision: o.revision,
                 title: d.get('title'),
                 venue: d.get('venue') || '',
+                catalogDetails: catalogDetailsFromForm(d),
                 capacity: o.kind === 'workshop' ? Number(d.get('capacity')) : null,
                 credits: Number(d.get('credits')),
                 creditType: d.get('creditType'),
@@ -243,6 +247,12 @@ export function OfferingActions({
             <Field label="Offering title">
               <input name="title" defaultValue={o.title} required />
             </Field>
+            <CatalogDetailsEditor
+              initial={o.catalog_details}
+              inherited={data?.program?.catalog_details}
+              summary={data?.program?.description}
+              offering
+            />
             {o.kind === 'workshop' ? (
               <>
                 <Field label="Venue">
